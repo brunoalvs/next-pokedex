@@ -1,19 +1,27 @@
 import { useEffect, useState } from 'react'
 import { PokemonItemList } from '../../blocks/PokemonItemList'
 
-export const Main = () => {
-	const [pokemonList, setPokemonList] = useState([])
+interface PokemonDataResponse {
+	name: string
+	url: string
+}
 
-	const getPokemon = async () => {
-		await fetch('https://pokeapi.co/api/v2/pokemon/')
+export const Main = () => {
+	const [pokemonsList, setPokemonsList] = useState<PokemonDataResponse[]>([])
+
+	async function getPokemons() {
+		await fetch('https://pokeapi.co/api/v2/pokemon?limit=9')
 			.then(response => response.json())
-			.then(data => data.results)
-			.then(data => setPokemonList(data))
-		// now add image to each pokemon
+			.then(data => {
+				setPokemonsList(data.results)
+			})
+			.catch(error => {
+				console.error(error)
+			})
 	}
 
 	useEffect(() => {
-		getPokemon()
+		getPokemons()
 	}, [])
 
 	return (
@@ -30,14 +38,8 @@ export const Main = () => {
 				</form>
 			</header>
 			<section>
-				{pokemonList.map((pokemon, index) => (
-					<PokemonItemList
-						key={index}
-						pokemon={{
-							id: index,
-							name: pokemon.name,
-						}}
-					/>
+				{pokemonsList.map((pokemon, index) => (
+					<PokemonItemList key={index} name={pokemon.name} url={pokemon.url} />
 				))}
 			</section>
 		</div>

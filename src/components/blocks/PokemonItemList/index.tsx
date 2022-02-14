@@ -1,14 +1,13 @@
 type PokemonItemListProps = {
-	pokemon: {
-		id: number
-		name: string
-	}
+	name: string
+	url: string
 }
-export const PokemonItemList = ({ pokemon }: PokemonItemListProps) => {
+
+export const PokemonItemList = ({ name, url }: PokemonItemListProps) => {
 	return (
 		<div>
-			<h2>{pokemon.name}</h2>
-			<p>{pokemon.id}</p>
+			<h2>{name}</h2>
+			<p>{url}</p>
 		</div>
 	)
 }
