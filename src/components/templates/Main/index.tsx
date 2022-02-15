@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { PokemonItemList } from '../../blocks/PokemonItemList'
 
+import { Container } from './styles'
+
 interface PokemonDataResponse {
 	name: string
 	url: string
@@ -25,9 +27,9 @@ export const Main = () => {
 	}, [])
 
 	return (
-		<div>
+		<Container>
 			<header>
-				<h1>Pokédex</h1>
+				<h1 className="title">Pokédex</h1>
 				<p>
 					Search for a Pokémon by name or using its National Pokédex number.
 				</p>
@@ -37,11 +39,17 @@ export const Main = () => {
 					<button type="submit">Search</button>
 				</form>
 			</header>
-			<section>
+			<section
+				style={{
+					display: 'grid',
+					gridTemplateColumns: 'repeat(2, 1fr)',
+					gap: '2rem',
+				}}
+			>
 				{pokemonsList.map((pokemon, index) => (
 					<PokemonItemList key={index} name={pokemon.name} url={pokemon.url} />
 				))}
 			</section>
-		</div>
+		</Container>
 	)
 }
