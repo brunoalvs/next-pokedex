@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
+
 import { SearchInput } from '../../blocks/SearchInput'
 import { PokemonItemList } from '../../blocks/PokemonItemList'
 
@@ -36,19 +38,6 @@ export const Main = () => {
 		getPokemons()
 	}, [])
 
-	// When user scrolls to the bottom of the page, fetch more data
-	useEffect(() => {
-		window.addEventListener('scroll', () => {
-			if (
-				window.innerHeight + window.scrollY >=
-				document.body.offsetHeight - 500
-			) {
-				console.log('bottom reached')
-				getPokemons()
-			}
-		})
-	}, [])
-
 	return (
 		<Container>
 			<header>
@@ -66,16 +55,27 @@ export const Main = () => {
 					placeholder="Search for a Pokémon"
 				/>
 			</header>
-			<section
-				style={{
-					display: 'grid',
-					gridTemplateColumns: 'repeat(2, 1fr)',
-					gap: '2rem',
-				}}
-			>
-				{pokemonsList.map((pokemon, index) => (
-					<PokemonItemList key={index} name={pokemon.name} url={pokemon.url} />
-				))}
+			<section>
+				<InfiniteScroll
+					className="infinite-scroll"
+					dataLength={pokemonsList.length}
+					next={getPokemons}
+					hasMore={true}
+					loader={<h4>Loading...</h4>}
+					endMessage={
+						<p style={{ textAlign: 'center' }}>
+							<b>Yay! You have seen it all</b>
+						</p>
+					}
+				>
+					{pokemonsList.map((pokemon, index) => (
+						<PokemonItemList
+							key={index}
+							name={pokemon.name}
+							url={pokemon.url}
+						/>
+					))}
+				</InfiniteScroll>
 			</section>
 		</Container>
 	)

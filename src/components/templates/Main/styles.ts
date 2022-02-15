@@ -20,4 +20,10 @@ export const Container = styled.main`
 		font-size: 3.5rem;
 		color: var(--text-title);
 	}
+
+	.infinite-scroll {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+	}
 `
