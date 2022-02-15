@@ -1,7 +1,9 @@
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
-export const Container = styled.div`
-	background-color: var(--shape);
+export const Container = styled.div<{
+	bgColor?: string
+}>`
+	background-color: ${props => props.bgColor || `var(--shape)`};
 	border-radius: 1.25rem;
 	padding: 2rem;
 

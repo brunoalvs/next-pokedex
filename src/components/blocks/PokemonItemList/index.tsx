@@ -14,8 +14,8 @@ export const PokemonItemList = ({ name, url }: PokemonItemListProps) => {
 		await fetch(url)
 			.then(response => response.json())
 			.then(data => {
-				console.log(data)
 				setPokemon(data)
+				return data
 			})
 			.catch(error => {
 				console.error(error)
