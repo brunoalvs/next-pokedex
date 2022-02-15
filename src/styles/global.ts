@@ -11,8 +11,13 @@ export const GlobalStyle = createGlobalStyle`
     --text-body: #5d5e7c;
 
     --background: #f5fbfb;
-    --shape: #c9d7db;
     --input-bg: #ebf3f5;
+    --input-border: #d9e3e9;
+
+    --shape: #c9d7db;
+    --shape-hover: #d2d9e0;
+    --shape-active: #bcc8d0;
+
   }
 
   * {

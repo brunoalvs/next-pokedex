@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { SearchInput } from '../../blocks/SearchInput'
 import { PokemonItemList } from '../../blocks/PokemonItemList'
 
 import { Container } from './styles'
@@ -10,6 +11,7 @@ interface PokemonDataResponse {
 
 export const Main = () => {
 	const [pokemonsList, setPokemonsList] = useState<PokemonDataResponse[]>([])
+	const [searchText, setSearchText] = useState('')
 
 	async function getPokemons() {
 		await fetch('https://pokeapi.co/api/v2/pokemon?limit=9')
@@ -20,6 +22,12 @@ export const Main = () => {
 			.catch(error => {
 				console.error(error)
 			})
+	}
+
+	function filterPokemonList(searchText: string) {
+		return pokemonsList.filter(pokemon =>
+			pokemon.name.toLowerCase().includes(searchText.toLowerCase())
+		)
 	}
 
 	useEffect(() => {
@@ -34,15 +42,19 @@ export const Main = () => {
 					Search for a Pokémon by name or using its National Pokédex number.
 				</p>
 
-				<form action="/search" method="get">
-					<input type="text" name="q" placeholder="Search" />
-					<button type="submit">Search</button>
-				</form>
+				<SearchInput
+					onChange={setSearchText}
+					onSubmit={() => {
+						filterPokemonList(searchText)
+					}}
+					value={searchText}
+					placeholder="Search for a Pokémon"
+				/>
 			</header>
 			<section
 				style={{
 					display: 'grid',
-					gridTemplateColumns: 'repeat(3, 1fr)',
+					gridTemplateColumns: 'repeat(2, 1fr)',
 					gap: '2rem',
 				}}
 			>

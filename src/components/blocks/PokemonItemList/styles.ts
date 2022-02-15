@@ -5,14 +5,20 @@ export const Container = styled.div<{
 }>`
 	background-color: ${props => props.bgColor || `var(--shape)`};
 	border-radius: 1.25rem;
+	cursor: pointer;
 	padding: 2rem;
+	text-align: center;
 
 	display: grid;
 	grid-template-rows: 1fr auto auto;
 	grid-template-columns: 1fr;
 	gap: 0.5rem;
 
-	text-align: center;
+	transition: filter 0.2s;
+
+	&:hover {
+		filter: brightness(1.1);
+	}
 
 	> img {
 		width: 100%;
