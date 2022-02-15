@@ -14,10 +14,12 @@ export const Main = () => {
 	const [searchText, setSearchText] = useState('')
 
 	async function getPokemons() {
-		await fetch('https://pokeapi.co/api/v2/pokemon?limit=9')
+		await fetch(
+			`https://pokeapi.co/api/v2/pokemon?offset=${pokemonsList.length}`
+		)
 			.then(response => response.json())
 			.then(data => {
-				setPokemonsList(data.results)
+				setPokemonsList([...pokemonsList, ...data.results])
 			})
 			.catch(error => {
 				console.error(error)
@@ -32,6 +34,19 @@ export const Main = () => {
 
 	useEffect(() => {
 		getPokemons()
+	}, [])
+
+	// When user scrolls to the bottom of the page, fetch more data
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			if (
+				window.innerHeight + window.scrollY >=
+				document.body.offsetHeight - 500
+			) {
+				console.log('bottom reached')
+				getPokemons()
+			}
+		})
 	}, [])
 
 	return (
