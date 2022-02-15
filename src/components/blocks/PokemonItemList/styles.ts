@@ -21,7 +21,7 @@ export const Container = styled.div`
 	}
 
 	> h2 {
-		color: 2e3057;
+		color: var(--text-title);
 		font-size: 2rem;
 		text-transform: capitalize;
 	}

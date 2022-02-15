@@ -7,6 +7,11 @@ export const Container = styled.main`
 		display: grid;
 		gap: 1rem;
 		padding-bottom: 3rem;
+
+		p {
+			font-size: 1.25rem;
+			color: var(--text-body);
+		}
 	}
 
 	.title {
