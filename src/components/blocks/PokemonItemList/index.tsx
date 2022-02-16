@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Detail } from '../../templates/Detail'
+import ColorThief from 'colorthief'
+
 import { Container } from './styles'
 
 type PokemonItemListProps = {
@@ -40,6 +42,7 @@ interface Pokemon {
 export const PokemonItemList = ({ name, url }: PokemonItemListProps) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [pokemon, setPokemon] = useState<Pokemon>()
+	const [pokemonBgColor, setPokemonBgColor] = useState<string>()
 
 	const [detailIsOpen, setDetailIsOpen] = useState(false)
 
@@ -50,14 +53,72 @@ export const PokemonItemList = ({ name, url }: PokemonItemListProps) => {
 				setPokemon(data)
 				return data
 			})
+			// .then(() => {
+			// 	const colorThief = new ColorThief()
+			// 	const img = new Image()
+
+			// 	if (img.complete) {
+			// 		colorThief.getColor(img)
+			// 	} else {
+			// 		img.addEventListener('load', function () {
+			// 			console.log('color', colorThief.getColor(img))
+			// 			colorThief.getColor(img)
+
+			// 			const rgb = colorThief.getColor(img)
+			// 			const hex = rgb
+			// 				.map(x => {
+			// 					return x.toString(16).padStart(2, '0')
+			// 				})
+			// 				.join('')
+
+			// 			setPokemonBgColor(`#${hex}`)
+			// 		})
+			// 	}
+
+			// 	img.crossOrigin = 'Anonymous'
+			// 	img.src = pokemon?.sprites?.other?.['official-artwork'].front_default
+			// })
 			.catch(error => {
 				console.error(error)
 			})
+			.finally(() => {})
 	}
 
 	useEffect(() => {
 		getPokemonData().then(() => setIsLoading(false))
 	}, [])
+
+	useEffect(() => {
+		const imagePokemon =
+			pokemon?.sprites?.other?.['official-artwork'].front_default
+
+		if (imagePokemon) {
+			const colorThief = new ColorThief()
+			const img = new Image()
+
+			img.crossOrigin = 'Anonymous'
+			img.src = imagePokemon
+
+			img.addEventListener('load', function () {
+				const rgb = colorThief.getColor(img)
+				const hex = rgb
+					.map(x => {
+						return x.toString(16).padStart(2, '0')
+					})
+					.join('')
+
+				setPokemonBgColor(`${rgb[0]},${rgb[1]},${rgb[2]}`)
+			})
+		}
+	}, [pokemon])
+
+	useEffect(() => {
+		if (detailIsOpen) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = 'auto'
+		}
+	}, [detailIsOpen])
 
 	if (isLoading) {
 		return <div>Loading...</div>
@@ -66,6 +127,7 @@ export const PokemonItemList = ({ name, url }: PokemonItemListProps) => {
 	return (
 		<>
 			<Container
+				bgColor={pokemonBgColor}
 				onClick={() => {
 					setDetailIsOpen(true)
 				}}

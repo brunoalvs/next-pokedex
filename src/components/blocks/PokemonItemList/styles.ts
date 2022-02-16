@@ -3,7 +3,7 @@ import styled, { css, keyframes } from 'styled-components'
 export const Container = styled.div<{
 	bgColor?: string
 }>`
-	background-color: ${props => props.bgColor || `var(--shape)`};
+	background-color: ${props => `rgba(${props.bgColor}, 0.5)` || `var(--shape)`};
 	border-radius: 1.25rem;
 	cursor: pointer;
 	padding: 2rem;
@@ -17,7 +17,7 @@ export const Container = styled.div<{
 	transition: filter 0.2s;
 
 	&:hover {
-		filter: brightness(1.1);
+		filter: brightness(0.9);
 	}
 
 	> img {
@@ -35,8 +35,8 @@ export const Container = styled.div<{
 	}
 
 	p {
-		color: #848692;
-		font-size: 1.25rem;
+		color: var(--text-title);
+		font-size: 1.5rem;
 		font-weight: 300;
 	}
 `
