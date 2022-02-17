@@ -27,3 +27,8 @@ export interface Pokemon {
 		}
 	]
 }
+
+export interface PokemonDataResponse {
+	name: string
+	url: string
+}
