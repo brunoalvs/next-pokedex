@@ -1,40 +1,15 @@
 import Image from 'next/image'
 import { useEffect } from 'react'
-import { colours } from '../../../services/type-colours'
+
+import { colours } from '../../../helpers/type-colours'
+import { Pokemon } from '../../../types/pokemon'
+
 import { Container, Header, Content, TypeLabel } from './styles'
 
 type DetailPageProps = {
 	isOpen: boolean
 	onClose: () => void
-	pokemon: {
-		id: number
-		name: string
-		sprites: {
-			other: {
-				['official-artwork']: {
-					front_default: string
-				}
-			}
-		}
-		stats: [
-			{
-				base_stat: number
-				effort: number
-				stat: {
-					name: string
-					url: string
-				}
-			}
-		]
-		types: [
-			{
-				slot: number
-				type: {
-					name: string
-				}
-			}
-		]
-	}
+	pokemon: Pokemon
 }
 
 export const Detail = ({ isOpen, onClose, pokemon }: DetailPageProps) => {

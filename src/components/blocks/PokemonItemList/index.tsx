@@ -1,42 +1,14 @@
 import { useEffect, useState } from 'react'
-import { Detail } from '../../templates/Detail'
 import ColorThief from 'colorthief'
 
+import { Pokemon } from '../../../types/pokemon'
+
+import { Detail } from '../../templates/Detail'
 import { Container } from './styles'
 
 type PokemonItemListProps = {
 	name: string
 	url: string
-}
-
-interface Pokemon {
-	id: number
-	name: string
-	sprites: {
-		other: {
-			['official-artwork']: {
-				front_default: string
-			}
-		}
-	}
-	stats: [
-		{
-			base_stat: number
-			effort: number
-			stat: {
-				name: string
-				url: string
-			}
-		}
-	]
-	types: [
-		{
-			slot: number
-			type: {
-				name: string
-			}
-		}
-	]
 }
 
 export const PokemonItemList = ({ name, url }: PokemonItemListProps) => {
@@ -53,31 +25,6 @@ export const PokemonItemList = ({ name, url }: PokemonItemListProps) => {
 				setPokemon(data)
 				return data
 			})
-			// .then(() => {
-			// 	const colorThief = new ColorThief()
-			// 	const img = new Image()
-
-			// 	if (img.complete) {
-			// 		colorThief.getColor(img)
-			// 	} else {
-			// 		img.addEventListener('load', function () {
-			// 			console.log('color', colorThief.getColor(img))
-			// 			colorThief.getColor(img)
-
-			// 			const rgb = colorThief.getColor(img)
-			// 			const hex = rgb
-			// 				.map(x => {
-			// 					return x.toString(16).padStart(2, '0')
-			// 				})
-			// 				.join('')
-
-			// 			setPokemonBgColor(`#${hex}`)
-			// 		})
-			// 	}
-
-			// 	img.crossOrigin = 'Anonymous'
-			// 	img.src = pokemon?.sprites?.other?.['official-artwork'].front_default
-			// })
 			.catch(error => {
 				console.error(error)
 			})
