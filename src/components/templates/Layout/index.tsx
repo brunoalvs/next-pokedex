@@ -1,5 +1,5 @@
 import { Header } from '../../organisms/Header'
-import { Container, Content } from './styles'
+import { Container } from './styles'
 
 export const Layout = ({ children }) => {
 	return (
@@ -9,7 +9,7 @@ export const Layout = ({ children }) => {
 					title="Pokédex"
 					subtitle="Search for a Pokémon by name or using its National Pokédex number."
 				/>
-				<Content>{children}</Content>
+				<section>{children}</section>
 			</Container>
 		</>
 	)
