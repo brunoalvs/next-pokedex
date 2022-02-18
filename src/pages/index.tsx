@@ -61,10 +61,8 @@ export default function Home({ pokemonsData }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const response = await fetch(
-		'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
-	)
-	const data = await response.json()
+	const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
+	const data = await res.json()
 
 	const pokemonsData = data.results
 
