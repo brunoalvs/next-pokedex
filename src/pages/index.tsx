@@ -1,9 +1,10 @@
 import { GetStaticProps } from 'next'
 import React, { useCallback, useEffect, useState } from 'react'
-import { Layout } from '../components/templates/Layout'
-import PokemonCard from '../components/PokemonCard'
+
 import { Pokemon, PokemonDataResponse } from '../types/pokemon'
+import { Layout } from '../components/templates/Layout'
 import { ListPokemons } from '../components/ListPokemons'
+import { PokeBallLoader } from '../components/PokeballLoader'
 
 interface HomeProps {
 	pokemonsData: PokemonDataResponse[]
@@ -46,7 +47,7 @@ export default function Home({ pokemonsData }: HomeProps) {
 	if (isLoading) {
 		return (
 			<Layout>
-				<p>Loading...</p>
+				<PokeBallLoader />
 			</Layout>
 		)
 	}

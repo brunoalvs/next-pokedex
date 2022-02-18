@@ -25,40 +25,18 @@ function PokemonCard({ ...props }: Pokemon) {
 				const rgb = colorThief.getColor(image)
 				let color = `${rgb[0]},${rgb[1]},${rgb[2]}`
 				setPokemonBgColor(rgb)
-				console.log('resolvehere!')
 				resolve(color)
 			}
 			image.onerror = () => {
 				reject(new Error('Could not get image'))
 			}
 		})
-
-		// let imagePokemon = props.sprites.other['official-artwork'].front_default
-
-		// if (imagePokemon) {
-		// 	const colorThief = new ColorThief()
-		// 	const img = new Image()
-
-		// 	img.crossOrigin = 'Anonymous'
-		// 	img.src = imagePokemon
-
-		// 	img.addEventListener('load', function () {
-		// 		const rgb = colorThief.getColor(img)
-		// 		setPokemonBgColor(`${rgb[0]},${rgb[1]},${rgb[2]}`)
-		// 	})
-		// }
 	}
 
 	useEffect(() => {
-		console.log('🔥')
 		getPokemonBgColor().then(() => {
 			setIsLoading(false)
-			console.log('🔥')
 		})
-		// .then(() => {
-		// 	isLoading && setIsLoading(false)
-		// 	console.log('loading end here!')
-		// })
 	}, [])
 
 	if (isLoading) {

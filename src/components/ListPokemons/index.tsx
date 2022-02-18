@@ -1,7 +1,6 @@
 import { Pokemon } from '../../types/pokemon'
 
 import PokemonCard from '../PokemonCard'
-
 import { Container } from './styles'
 
 interface ListPokemonsProps {

@@ -41,14 +41,13 @@ const shimmer = keyframes`
 
 export const SkeletonBox = styled.span`
 	width: 100%;
+	height: 20em;
+	background-color: #dddbdd;
 
 	display: inline-block;
 	border-radius: 0.5rem;
-	height: 5em;
-	padding-bottom: 100%;
 	position: relative;
 	overflow: hidden;
-	background-color: #dddbdd;
 
 	&:after {
 		content: '';
