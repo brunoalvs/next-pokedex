@@ -36,14 +36,6 @@ export default function Home({ pokemonsData }: HomeProps) {
 		})
 	}, [])
 
-	useEffect(() => {
-		if (pokemons.length <= 0) {
-			console.error('No pokemons found')
-			return
-		}
-		console.log('pokemonsData', pokemons)
-	}, [pokemons])
-
 	if (isLoading) {
 		return (
 			<Layout>
@@ -62,7 +54,9 @@ export default function Home({ pokemonsData }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
+	const res = await fetch(
+		'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
+	)
 	const data = await res.json()
 
 	const pokemonsData = data.results
