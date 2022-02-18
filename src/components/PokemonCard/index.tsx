@@ -60,7 +60,7 @@ function PokemonCard({ ...props }: Pokemon) {
 					src={pokemonImage}
 					alt={`An image of ${props.name}`}
 					layout="responsive"
-					priority={props.id < 6 ? true : false}
+					priority={props.id < 9 ? true : false}
 					className="pokemon-image"
 				/>
 				<div className="pokemon-info">
