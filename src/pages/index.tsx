@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { Pokemon, PokemonDataResponse } from '../types/pokemon'
+import { PokemonType, PokemonDataResponse } from '../types/pokemon'
 import { Layout } from '../components/templates/Layout'
 import { ListPokemons } from '../components/ListPokemons'
 import { PokeBallLoader } from '../components/PokeballLoader'
@@ -12,7 +12,7 @@ interface HomeProps {
 
 export default function Home({ pokemonsData }: HomeProps) {
 	const [isLoading, setIsLoading] = useState(true)
-	const [pokemons, setPokemons] = useState<Pokemon[]>([])
+	const [pokemons, setPokemons] = useState<PokemonType[]>([])
 
 	const getPokemonData = useCallback(async () => {
 		const pokemonPromises = pokemonsData.map(async pokemon => {

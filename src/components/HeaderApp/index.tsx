@@ -5,7 +5,7 @@ type HeaderProps = {
 	subtitle: string
 }
 
-export const Header = ({ title, subtitle, ...props }: HeaderProps) => {
+export const HeaderApp = ({ title, subtitle, ...props }: HeaderProps) => {
 	return (
 		<Container>
 			<h1 className="title">{title}</h1>

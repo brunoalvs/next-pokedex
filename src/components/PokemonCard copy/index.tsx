@@ -1,17 +1,18 @@
+import ColorThief from 'colorthief'
 import { useEffect, useState, memo } from 'react'
 import { default as NextImage } from 'next/image'
-import ColorThief from 'colorthief'
 
 import { PokemonType } from '../../types/pokemon'
-import { PokemonCardShimmer } from '../PokemonCardShimmer'
-import { Container } from './styles'
+import { Container, SkeletonBox, Content } from './styles'
 
-function PokemonCard({ id, name, sprites, ...props }: PokemonType) {
+function PokemonCard({ ...props }: PokemonType) {
 	const [isLoading, setIsLoading] = useState(true)
 	const [pokemonBgColor, setPokemonBgColor] = useState<string>()
 	const [pokemonImage] = useState<string>(
-		sprites.other['official-artwork'].front_default
+		props.sprites.other['official-artwork'].front_default
 	)
+
+	const [cardIsOpen, setCardIsOpen] = useState(false)
 
 	async function getPokemonBgColor() {
 		return new Promise((resolve: (value: string) => void, reject) => {
@@ -38,25 +39,43 @@ function PokemonCard({ id, name, sprites, ...props }: PokemonType) {
 	}, [])
 
 	if (isLoading) {
-		return <PokemonCardShimmer />
+		return <SkeletonBox />
 	}
 
 	return (
 		<>
 			<Container
+				cardIsOpen={cardIsOpen}
+				onClick={() => {
+					window.alert('OPEN')
+					setCardIsOpen(true)
+				}}
 				style={{
 					backgroundColor: `rgba(${pokemonBgColor}, 0.45)`,
 				}}
 			>
-				<img
-					src={pokemonImage}
-					alt={`An image of ${name}`}
+				<figure
 					style={{
 						width: '100%',
+						borderRadius: '5px',
+						overflow: 'hidden',
+						border: '1px dashed #f30',
 					}}
-				/>
-				<h2>{name}</h2>
-				<p>{id.toString().padStart(3, '0')}</p>
+				>
+					<NextImage
+						width={300}
+						height={300}
+						src={pokemonImage}
+						alt={`An image of ${props.name}`}
+						layout="responsive"
+						priority={props.id < 9 ? true : false}
+						className="pokemon-image"
+					/>
+				</figure>
+				<Content>
+					<h2>{props.name}</h2>
+					<p>{props.id.toString().padStart(3, '0') ?? '000'}</p>
+				</Content>
 			</Container>
 		</>
 	)
