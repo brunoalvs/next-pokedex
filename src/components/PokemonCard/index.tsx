@@ -2,7 +2,9 @@ import ColorThief from 'colorthief'
 import { useEffect, useState, memo } from 'react'
 import { default as NextImage } from 'next/image'
 
-import { Pokemon } from '../../../types/pokemon'
+import { Pokemon } from '../../types/pokemon'
+
+import { Container } from './styles'
 
 function PokemonCard({ ...props }: Pokemon) {
 	const [isLoading, setIsLoading] = useState(true)
@@ -39,21 +41,25 @@ function PokemonCard({ ...props }: Pokemon) {
 
 	return (
 		<>
-			<div
+			<Container
 				style={{
-					backgroundColor: `rgba(${pokemonBgColor}, 0.45)`,
+					backgroundColor: `rgba(${pokemonBgColor}, 0.5)`,
 				}}
 			>
 				<NextImage
 					width={300}
 					height={300}
-					layout="responsive"
 					src={props.sprites?.other?.['official-artwork'].front_default}
 					alt={`An image of ${props.name}`}
+					layout="responsive"
+					priority={props.id < 6 ? true : false}
+					className="pokemon-image"
 				/>
-				<h2>{props.name}</h2>
-				<p>{props.id.toString().padStart(3, '0') ?? '000'}</p>
-			</div>
+				<div className="pokemon-info">
+					<h2>{props.name}</h2>
+					<p>{props.id.toString().padStart(3, '0') ?? '000'}</p>
+				</div>
+			</Container>
 		</>
 	)
 }

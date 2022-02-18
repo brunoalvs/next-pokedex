@@ -9,6 +9,4 @@ export const Container = styled.section`
 	border: 1px dashed hotpink;
 `
 
-export const Content = styled.div`
-	border: 1px dashed rebeccapurple;
-`
+export const Content = styled.div``

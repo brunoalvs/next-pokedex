@@ -1,8 +1,9 @@
 import { GetStaticProps } from 'next'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Layout } from '../components/templates/Layout'
-import PokemonCard from '../components/templates/PokemonCard'
+import PokemonCard from '../components/PokemonCard'
 import { Pokemon, PokemonDataResponse } from '../types/pokemon'
+import { ListPokemons } from '../components/ListPokemons'
 
 interface HomeProps {
 	pokemonsData: PokemonDataResponse[]
@@ -53,10 +54,7 @@ export default function Home({ pokemonsData }: HomeProps) {
 	return (
 		<>
 			<Layout>
-				<h1>Home</h1>
-				{pokemons.map((pokemon, index) => (
-					<PokemonCard key={index} {...pokemon} />
-				))}
+				<ListPokemons pokemons={pokemons} />
 			</Layout>
 		</>
 	)
