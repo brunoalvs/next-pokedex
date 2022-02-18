@@ -4,52 +4,82 @@ import { default as NextImage } from 'next/image'
 
 import { Pokemon } from '../../types/pokemon'
 
-import { Container } from './styles'
+import { Container, SkeletonBox } from './styles'
 
 function PokemonCard({ ...props }: Pokemon) {
 	const [isLoading, setIsLoading] = useState(true)
 	const [pokemonBgColor, setPokemonBgColor] = useState<string>()
+	const [pokemonImage] = useState<string>(
+		props.sprites.other['official-artwork'].front_default
+	)
 
 	const [detailIsOpen, setDetailIsOpen] = useState(false)
 
 	async function getPokemonBgColor() {
-		let imagePokemon = props.sprites.other['official-artwork'].front_default
+		return new Promise((resolve: (value: string) => void, reject) => {
+			const image = new Image()
+			image.crossOrigin = 'Anonymous'
+			image.src = pokemonImage
+			image.onload = () => {
+				const colorThief = new ColorThief()
+				const rgb = colorThief.getColor(image)
+				let color = `${rgb[0]},${rgb[1]},${rgb[2]}`
+				setPokemonBgColor(rgb)
+				console.log('resolvehere!')
+				resolve(color)
+			}
+			image.onerror = () => {
+				reject(new Error('Could not get image'))
+			}
+		})
 
-		if (imagePokemon) {
-			const colorThief = new ColorThief()
-			const img = new Image()
+		// let imagePokemon = props.sprites.other['official-artwork'].front_default
 
-			img.crossOrigin = 'Anonymous'
-			img.src = imagePokemon
+		// if (imagePokemon) {
+		// 	const colorThief = new ColorThief()
+		// 	const img = new Image()
 
-			img.addEventListener('load', function () {
-				const rgb = colorThief.getColor(img)
-				setPokemonBgColor(`${rgb[0]},${rgb[1]},${rgb[2]}`)
-			})
-		}
+		// 	img.crossOrigin = 'Anonymous'
+		// 	img.src = imagePokemon
+
+		// 	img.addEventListener('load', function () {
+		// 		const rgb = colorThief.getColor(img)
+		// 		setPokemonBgColor(`${rgb[0]},${rgb[1]},${rgb[2]}`)
+		// 	})
+		// }
 	}
 
 	useEffect(() => {
-		getPokemonBgColor().finally(() => {
-			isLoading && setIsLoading(false)
+		console.log('🔥')
+		getPokemonBgColor().then(() => {
+			setIsLoading(false)
+			console.log('🔥')
 		})
+		// .then(() => {
+		// 	isLoading && setIsLoading(false)
+		// 	console.log('loading end here!')
+		// })
 	}, [])
 
 	if (isLoading) {
-		return <div>Pokemon Loading...</div>
+		return (
+			<div>
+				<SkeletonBox />
+			</div>
+		)
 	}
 
 	return (
 		<>
 			<Container
 				style={{
-					backgroundColor: `rgba(${pokemonBgColor}, 0.5)`,
+					backgroundColor: `rgba(${pokemonBgColor}, 0.45)`,
 				}}
 			>
 				<NextImage
 					width={300}
 					height={300}
-					src={props.sprites?.other?.['official-artwork'].front_default}
+					src={pokemonImage}
 					alt={`An image of ${props.name}`}
 					layout="responsive"
 					priority={props.id < 6 ? true : false}
