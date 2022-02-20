@@ -59,12 +59,18 @@ export const getStaticProps: GetStaticProps = async () => {
 	)
 	const data = await res.json()
 
+	if (!data) {
+		return {
+			notFound: true,
+		}
+	}
+
 	const pokemonsData = data.results
 
 	return {
 		props: {
 			pokemonsData,
 		},
-		// revalidate: 60 * 60 * 24 * 30 // 30 days
+		revalidate: 60 * 60 * 24, // 30 days
 	}
 }

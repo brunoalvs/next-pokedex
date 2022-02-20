@@ -5,13 +5,19 @@ import ColorThief from 'colorthief'
 import { PokemonType } from '../../types/pokemon'
 import { PokemonCardShimmer } from '../PokemonCardShimmer'
 import { Container } from './styles'
+import PokemonDetail from '../PokemonDetail'
 
-function PokemonCard({ id, name, sprites, ...props }: PokemonType) {
+interface PokemonCardProps {
+	pokemon: PokemonType
+}
+
+function PokemonCard({ pokemon, ...props }: PokemonCardProps) {
 	const [isLoading, setIsLoading] = useState(true)
 	const [pokemonBgColor, setPokemonBgColor] = useState<string>()
 	const [pokemonImage] = useState<string>(
-		sprites.other['official-artwork'].front_default
+		pokemon.sprites.other['official-artwork'].front_default
 	)
+	const [pokemonDetailIsOpen, setPokemonDetailIsOpen] = useState(false)
 
 	async function getPokemonBgColor() {
 		return new Promise((resolve: (value: string) => void, reject) => {
@@ -31,6 +37,14 @@ function PokemonCard({ id, name, sprites, ...props }: PokemonType) {
 		})
 	}
 
+	const handleOpenPokemonDetail = () => {
+		setPokemonDetailIsOpen(true)
+	}
+
+	const handleClosePokemonDetail = () => {
+		setPokemonDetailIsOpen(false)
+	}
+
 	useEffect(() => {
 		getPokemonBgColor().then(() => {
 			setIsLoading(false)
@@ -43,7 +57,13 @@ function PokemonCard({ id, name, sprites, ...props }: PokemonType) {
 
 	return (
 		<>
+			<PokemonDetail
+				pokemon={pokemon}
+				isOpen={pokemonDetailIsOpen}
+				handleClosePokemonDetail={handleClosePokemonDetail}
+			/>
 			<Container
+				onClick={() => handleOpenPokemonDetail()}
 				style={{
 					backgroundColor: `rgba(${pokemonBgColor}, 0.45)`,
 				}}
@@ -55,8 +75,8 @@ function PokemonCard({ id, name, sprites, ...props }: PokemonType) {
 						width: '100%',
 					}}
 				/>
-				<h2>{name}</h2>
-				<p>{id.toString().padStart(3, '0')}</p>
+				<h2>{pokemon.name}</h2>
+				<p>{pokemon.id.toString().padStart(3, '0')}</p>
 			</Container>
 		</>
 	)

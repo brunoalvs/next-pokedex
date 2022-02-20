@@ -2,14 +2,14 @@ import Image from 'next/image'
 import { useEffect } from 'react'
 
 import { colours } from '../../../helpers/type-colours'
-import { Pokemon } from '../../../types/pokemon'
+import { PokemonType } from '../../../types/pokemon'
 
 import { Container, Header, Content, TypeLabel } from './styles'
 
 type DetailPageProps = {
 	isOpen: boolean
 	onClose: () => void
-	pokemon: Pokemon
+	pokemon: PokemonType
 }
 
 export const Detail = ({ isOpen, onClose, pokemon }: DetailPageProps) => {
