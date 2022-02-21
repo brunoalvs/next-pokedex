@@ -43,8 +43,8 @@ export const Detail = ({ isOpen, onClose, pokemon }: DetailPageProps) => {
 					<Image
 						src={pokemon.sprites.other['official-artwork'].front_default}
 						alt={pokemon.name}
-						width={300}
-						height={300}
+						width={250}
+						height={250}
 						layout="responsive"
 					/>
 				</figure>

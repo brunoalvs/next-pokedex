@@ -68,6 +68,8 @@ export const Content = styled.article`
 		padding: 6rem 2rem;
 		background: var(--shape);
 		border-radius: 2.5rem;
+
+		box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 1);
 	}
 
 	.pokemon-types {

@@ -18,6 +18,12 @@ export const Container = styled.div`
 	}
 
 	@media (min-width: 1600px) {
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		grid-template-columns: repeat(6, 1fr);
+	}
+
+	@media (min-width: 2100px) {
+		max-width: 90vw;
+		grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+		margin: 0 auto;
 	}
 `

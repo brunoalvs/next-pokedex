@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import { memo, useEffect } from 'react'
 import { PokemonType } from '../../types/pokemon'
+import { PokemonTypes } from '../PokemonTypes'
 
 import { Container, Header, Figure, Content } from './styles'
 
@@ -26,7 +28,7 @@ function PokemonDetail({
 
 	useEffect(() => {
 		if (isOpen) {
-			console.log('open')
+			console.log('Pokemon', pokemon)
 			document.body.style.overflow = 'hidden'
 		} else {
 			document.body.style.overflow = 'auto'
@@ -45,16 +47,20 @@ function PokemonDetail({
 						/>
 					</svg>
 				</button>
-				<h2 className="title">{pokemon.name}</h2>
-				<p>{pokemon.id.toString().padStart(3, '0')}</p>
+				<p className="number">#{pokemon.id.toString().padStart(3, '0')}</p>
 			</Header>
 			<Figure>
 				<img
 					src={pokemon.sprites.other['official-artwork'].front_default}
 					alt={pokemon.name}
+					width={300}
+					height={300}
 				/>
 			</Figure>
-			<Content></Content>
+			<Content>
+				<h2 className="title">{pokemon.name}</h2>
+				<PokemonTypes types={pokemon.types} />
+			</Content>
 		</Container>
 	)
 }

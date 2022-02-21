@@ -9,6 +9,8 @@ export const Container = styled.div<{
 
 	width: 100vw;
 	min-height: 100vh;
+	height: 100%;
+	overflow-y: auto;
 	background-color: var(--background);
 
 	opacity: 0;
@@ -26,6 +28,8 @@ export const Container = styled.div<{
 `
 
 export const Header = styled.header`
+	width: 100%;
+	height: 5rem;
 	border: 1px dashed darkblue;
 	display: flex;
 	flex-direction: column;
@@ -39,12 +43,14 @@ export const Header = styled.header`
 		border: 0;
 		background-color: var(--background);
 		position: absolute;
-		top: calc(50% - 1rem);
+		top: calc(50% - 1.5rem);
 		left: 0;
 		transition: filter 0.2s;
 
 		> svg {
-			width: 2rem;
+			width: 3rem;
+			height: 3rem;
+			border: 1px dashed darkblue;
 		}
 
 		&:hover {
@@ -52,22 +58,27 @@ export const Header = styled.header`
 		}
 	}
 
-	.title {
+	.number {
 		color: var(--text-title);
 		font-size: 2.5rem;
+		font-weight: bold;
 		text-transform: capitalize;
 	}
 `
 export const Figure = styled.figure`
 	width: 100%;
-	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	background-color: rgba(106, 25, 106, 0.5);
 `
 export const Content = styled.section`
 	background-color: rgba(34, 105, 65, 0.5);
 	padding: 1rem;
+
+	.title {
+		color: var(--text-title);
+		font-size: 2.5rem;
+		text-transform: capitalize;
+	}
 `
