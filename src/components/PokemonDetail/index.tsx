@@ -3,7 +3,7 @@ import { memo, useEffect } from 'react'
 import { PokemonType } from '../../types/pokemon'
 import { PokemonTypes } from '../PokemonTypes'
 
-import { Container, Header, Figure, Content } from './styles'
+import { Container, Header, Content, Figure, Details } from './styles'
 
 interface PokemonDetailProps {
 	pokemon: PokemonType
@@ -49,17 +49,19 @@ function PokemonDetail({
 				</button>
 				<p className="number">#{pokemon.id.toString().padStart(3, '0')}</p>
 			</Header>
-			<Figure>
-				<img
-					src={pokemon.sprites.other['official-artwork'].front_default}
-					alt={pokemon.name}
-					width={300}
-					height={300}
-				/>
-			</Figure>
 			<Content>
-				<h2 className="title">{pokemon.name}</h2>
-				<PokemonTypes types={pokemon.types} />
+				<Figure>
+					<img
+						src={pokemon.sprites.other['official-artwork'].front_default}
+						alt={pokemon.name}
+						width={350}
+						height={350}
+					/>
+				</Figure>
+				<Details>
+					<h2 className="title">{pokemon.name}</h2>
+					<PokemonTypes types={pokemon.types} />
+				</Details>
 			</Content>
 		</Container>
 	)

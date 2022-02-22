@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-	border: 1px dashed yellow;
+	display: flex;
+	justify-content: center;
+	border: 1px dashed orangered;
 	display: flex;
 	gap: 1rem;
 `

@@ -25,6 +25,11 @@ export const Container = styled.div<{
     opacity: 1;
     transform: translateX(0);
   `}
+
+	@media (min-width: 900px) {
+		/* display: flex;
+		flex-wrap: wrap; */
+	}
 `
 
 export const Header = styled.header`
@@ -65,20 +70,35 @@ export const Header = styled.header`
 		text-transform: capitalize;
 	}
 `
+export const Content = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`
+
 export const Figure = styled.figure`
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(106, 25, 106, 0.5);
+	border: 1px dashed rgba(106, 25, 106, 0.5);
+
+	@media (min-width: 900px) {
+		width: 40%;
+	}
 `
-export const Content = styled.section`
-	background-color: rgba(34, 105, 65, 0.5);
+export const Details = styled.section`
+	width: 100%;
+	border: 1px dashed rgba(34, 105, 65, 0.5);
 	padding: 1rem;
 
 	.title {
 		color: var(--text-title);
 		font-size: 2.5rem;
+		text-align: center;
 		text-transform: capitalize;
+	}
+
+	@media (min-width: 900px) {
+		width: 60%;
 	}
 `
