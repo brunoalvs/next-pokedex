@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next'
 import React, { useCallback, useEffect, useState } from 'react'
 
 import { PokemonType, PokemonDataResponse } from '../types/pokemon'
-import { Layout } from '../components/templates/Layout'
-import { ListPokemons } from '../components/ListPokemons'
-import { PokeBallLoader } from '../components/PokeballLoader'
+import { Layout } from '../components/Layout'
+import { ListPokemons } from '../componentsOLD/ListPokemons'
+import { PokeBallLoader } from '../componentsOLD/PokeballLoader'
 
 interface HomeProps {
 	pokemonsData: PokemonDataResponse[]
