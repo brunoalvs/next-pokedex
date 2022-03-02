@@ -3,8 +3,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 
 import { PokemonType, PokemonDataResponse } from '../types/pokemon'
 import { Layout } from '../components/Layout'
-import { ListPokemons } from '../componentsOLD/ListPokemons'
-import { PokeBallLoader } from '../componentsOLD/PokeballLoader'
+import { PokemonList } from '../components/PokemonList'
+import { Loader } from '../components/Loader'
 
 interface HomeProps {
 	pokemonsData: PokemonDataResponse[]
@@ -39,7 +39,7 @@ export default function Home({ pokemonsData }: HomeProps) {
 	if (isLoading) {
 		return (
 			<Layout>
-				<PokeBallLoader />
+				<Loader />
 			</Layout>
 		)
 	}
@@ -47,7 +47,7 @@ export default function Home({ pokemonsData }: HomeProps) {
 	return (
 		<>
 			<Layout>
-				<ListPokemons pokemons={pokemons} />
+				<PokemonList pokemons={pokemons} />
 			</Layout>
 		</>
 	)
