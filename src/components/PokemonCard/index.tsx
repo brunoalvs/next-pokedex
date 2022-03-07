@@ -70,6 +70,7 @@ function PokemonCard({ pokemon, ...props }: PokemonCardProps) {
 				}}
 			>
 				<img
+					id="pokemon-card"
 					src={pokemonImage}
 					alt={`An image of ${name}`}
 					style={{
