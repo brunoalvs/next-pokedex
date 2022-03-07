@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import { PokemonType } from '../../types/pokemon'
+import Link from 'next/link'
 
-import PokemonCard from '../PokemonCard'
-import { Button } from '../Button'
+import { PokemonDataResponse } from '../../types/pokemon'
 
-import { Wrapper, Container } from './styles'
+import { Wrapper, Container, PokeCard } from './styles'
 
 interface PokemonListProps {
-	pokemons: PokemonType[]
+	pokemons: PokemonDataResponse[]
 }
 
 export function PokemonList({ pokemons }: PokemonListProps) {
-	const [list, setList] = useState(pokemons.slice(0, 20))
-
 	return (
 		<Wrapper>
 			<Container>
-				{list.map(pokemon => (
-					<PokemonCard key={pokemon.id} pokemon={pokemon} />
+				{pokemons.map((pokemon, index) => (
+					<Link
+						key={index + 1}
+						href={pokemon.name}
+						children={
+							<PokeCard>
+								<img
+									src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+										index + 1
+									}.png`}
+									alt={`${pokemon.name} illustration`}
+								/>
+								<p>{pokemon.name}</p>
+								<p>{index.toString().padStart(3, '0')}</p>
+							</PokeCard>
+						}
+					></Link>
 				))}
 			</Container>
-
-			{list.length < pokemons.length && (
-				<Button
-					onClick={() =>
-						setList([...list, ...pokemons.slice(list.length, list.length + 20)])
-					}
-				>
-					Load More
-				</Button>
-			)}
 		</Wrapper>
 	)
 }

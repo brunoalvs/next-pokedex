@@ -1,76 +1,28 @@
-import { GetStaticProps } from 'next'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import Link from 'next/link'
 
-import { PokemonType, PokemonDataResponse } from '../types/pokemon'
+import { PokemonDataResponse } from '../types/pokemon'
 import { Layout } from '../components/Layout'
 import { PokemonList } from '../components/PokemonList'
-import { Loader } from '../components/Loader'
 
-interface HomeProps {
-	pokemonsData: PokemonDataResponse[]
-}
-
-export default function Home({ pokemonsData }: HomeProps) {
-	const [isLoading, setIsLoading] = useState(true)
-	const [pokemons, setPokemons] = useState<PokemonType[]>([])
-
-	const getPokemonData = useCallback(async () => {
-		const pokemonPromises = pokemonsData.map(async pokemon => {
-			const pokemonData = await fetch(pokemon.url)
-				.then(response => response.json())
-				.catch(error => {
-					console.error(error)
-				})
-
-			return pokemonData
-		})
-
-		const pokemonData = await Promise.all(pokemonPromises)
-
-		setPokemons(pokemonData)
-	}, [pokemonsData])
-
-	useEffect(() => {
-		getPokemonData().then(() => {
-			setIsLoading(false)
-		})
-	}, [])
-
-	if (isLoading) {
-		return (
-			<Layout>
-				<Loader />
-			</Layout>
-		)
-	}
-
+function HomePage({ pokemonsData }: { pokemonsData: PokemonDataResponse[] }) {
 	return (
-		<>
-			<Layout>
-				<PokemonList pokemons={pokemons} />
-			</Layout>
-		</>
+		<Layout>
+			<PokemonList pokemons={pokemonsData} />
+		</Layout>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch(
-		'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
-	)
-	const data = await res.json()
-
-	if (!data) {
-		return {
-			notFound: true,
-		}
-	}
-
-	const pokemonsData = data.results
+export async function getStaticProps() {
+	let res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+	let data = await res.json()
 
 	return {
 		props: {
-			pokemonsData,
+			pokemonsData: data.results,
 		},
-		// revalidate: 60 * 60 * 24, // 30 days
+		revalidate: 3 * 24 * 60 * 60, // Revalidating every 3 days
 	}
 }
+
+export default HomePage
