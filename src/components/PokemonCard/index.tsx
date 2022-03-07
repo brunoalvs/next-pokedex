@@ -49,7 +49,7 @@ function PokemonCard({ pokemon, ...props }: PokemonCardProps) {
 		getPokemonBgColor().then(() => {
 			setIsLoading(false)
 		})
-	}, [])
+	}, [getPokemonBgColor])
 
 	if (isLoading) {
 		return <p>Loading...</p>
