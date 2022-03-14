@@ -50,7 +50,7 @@ export const PokeCard = styled.div`
 	}
 
 	&:hover {
-		filter: brightness(80%);
+		filter: brightness(85%);
 	}
 
 	h2 {
