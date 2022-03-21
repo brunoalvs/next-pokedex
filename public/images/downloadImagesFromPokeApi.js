@@ -15,16 +15,6 @@ function Download(uri, filename, callback) {
 
 let data = pokemons
 
-// console.table(data.map(pokemon => pokemon.image))
-
 data.map((pokemon, index) => {
-	Download(pokemon.image, `${index + 1}.png`, () => console.log('done'))
+	Download(pokemon.image, `${index + 1}.png`, () => console.log(``))
 })
-
-//Download(
-//	'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/47.png',
-//	'pokemon.png',
-//	function () {
-//		console.log('Done')
-//	}
-//)
