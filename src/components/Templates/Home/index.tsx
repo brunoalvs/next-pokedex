@@ -1,6 +1,6 @@
 import { Container, HeaderApp } from './styles'
 
-export const Layout = ({ children }) => {
+export const Home = ({ children }) => {
 	return (
 		<Container>
 			<HeaderApp>

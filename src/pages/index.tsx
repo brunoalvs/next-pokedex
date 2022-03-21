@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { PokemonDataResponse } from '../types/pokemon'
-import { Layout } from '../components/Layout'
+import { Home } from '../components/Templates/Home'
 import { PokemonList } from '../components/PokemonList'
 
 function HomePage({ pokemonsData }: { pokemonsData: PokemonDataResponse[] }) {
+	const [pokemons, setPokemons] = useState(pokemonsData)
+
 	return (
-		<Layout>
-			<PokemonList pokemons={pokemonsData} />
-		</Layout>
+		<Home>
+			<PokemonList pokemons={pokemons} />
+		</Home>
 	)
 }
 
