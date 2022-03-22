@@ -4,7 +4,5 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { pokemons } from '../../../public/pokemons'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-	res.status(200).json({
-		pokemons: pokemons,
-	})
+	res.status(200).json(pokemons)
 }

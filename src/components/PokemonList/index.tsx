@@ -1,20 +1,25 @@
 import Link from 'next/link'
+import { useEffect } from 'react'
 
-import { PokemonDataResponse } from '../../types/pokemon'
+import { PokemonNextApiResponse } from '../../types/pokemon'
 import PokeCard from '../PokeCard'
 
 import { Wrapper, Container } from './styles'
 
 interface PokemonListProps {
-	pokemons: PokemonDataResponse[]
+	pokemons: PokemonNextApiResponse[]
 }
 
 export function PokemonList({ pokemons }: PokemonListProps) {
+	useEffect(() => {
+		console.log(pokemons[0])
+	}, [])
+
 	return (
 		<Wrapper>
 			<Container>
-				{pokemons.map((pokemon, index) => (
-					<PokeCard key={index} pokemonData={pokemon} index={index} />
+				{pokemons.map(pokemon => (
+					<PokeCard key={pokemon.id} pokemon={pokemon} />
 				))}
 			</Container>
 		</Wrapper>
