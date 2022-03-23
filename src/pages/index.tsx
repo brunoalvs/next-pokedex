@@ -13,7 +13,7 @@ function HomePage({ pokemons }: { pokemons: PokemonNextApiResponse[] }) {
 }
 
 export async function getStaticProps() {
-	let res = await fetch('http://localhost:3000/api/pokemons')
+	let res = await fetch(process.env.API_URL + '/pokemons')
 	let pokemons = await res.json()
 
 	return {
