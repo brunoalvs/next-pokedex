@@ -22,7 +22,7 @@ function HomePage({ pokemons }: { pokemons: PokemonNextApiResponse[] }) {
 			pokemon.name.toLowerCase().includes(search.toLowerCase())
 		)
 		const filteredPokemonById = pokemons.filter(pokemon =>
-			pokemon.id.toString().includes(search)
+			pokemon.id.toString().padStart(3, '0').includes(search)
 		)
 
 		if (search.length === 0) {

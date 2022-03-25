@@ -16,12 +16,15 @@ export const Home = ({ children, search }: HomeProps) => {
 				<p>
 					Search for a Pokémon by name or using its National Pokédex number.
 				</p>
-				<InputSearch
-					type="search"
-					placeholder="Search"
-					value={search.value}
-					onChange={search.onChange}
-				/>
+				<InputSearch>
+					<img src="/search_icon.svg" alt="Search icon" />
+					<input
+						type="search"
+						placeholder="Search"
+						value={search.value}
+						onChange={search.onChange}
+					/>
+				</InputSearch>
 			</HeaderApp>
 			<section>{children}</section>
 		</Container>

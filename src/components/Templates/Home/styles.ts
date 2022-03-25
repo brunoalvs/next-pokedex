@@ -23,21 +23,41 @@ export const HeaderApp = styled.header`
 	}
 `
 
-export const InputSearch = styled.input`
+export const InputSearch = styled.div`
+	display: grid;
+	grid-template-columns: 1.25rem 1fr;
+	gap: 1rem;
 	background-color: #ebf3f5;
-	border: 0;
 	border-radius: 0.8rem;
-	color: #b1b8c5;
-	outline: 1px solid #ebf3f5;
-	font-size: 1.1rem;
-	padding: 0.8rem 1rem;
+	padding: 0.8rem 1.2rem;
+	position: relative;
 
-	&:focus,
-	&:hover {
-		outline: 1px solid #a9afb0;
+	img {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
-	&::placeholder {
+	input {
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
+		border: 0;
+		border-radius: 0.8rem;
 		color: #b1b8c5;
+		font-size: 1.1rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding-left: 3rem;
+		outline: 1px solid #ebf3f5;
+
+		&:focus,
+		&:hover {
+			outline: 1px solid #a9afb0;
+		}
+
+		&::placeholder {
+			color: #b1b8c5;
+		}
 	}
 `
