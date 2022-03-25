@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Container = styled.a`
+export const Container = styled.a<{
+	isOpen: boolean
+}>`
 	cursor: pointer;
 	background-color: var(--shape);
 	border-radius: 1rem;
@@ -16,10 +18,6 @@ export const Container = styled.a`
 		color: var(--text-title);
 		opacity: 0.95;
 		font-size: 1.2rem;
-
-		&::before {
-			content: '#';
-		}
 
 		@media (min-width: 600px) {
 			font-size: 1.5rem;
