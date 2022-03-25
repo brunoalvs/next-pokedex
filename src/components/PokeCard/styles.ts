@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import Link from 'next/link'
-
 export const Container = styled.a`
 	cursor: pointer;
 	background-color: var(--shape);
@@ -37,7 +35,7 @@ export const Container = styled.a`
 		word-break: break-all;
 
 		@media (min-width: 600px) {
-			font-size: 2rem;
+			font-size: 1.8rem;
 		}
 	}
 `
