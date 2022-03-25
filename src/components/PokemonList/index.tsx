@@ -1,6 +1,3 @@
-import Link from 'next/link'
-import { useEffect } from 'react'
-
 import { PokemonNextApiResponse } from '../../types/pokemon'
 import PokeCard from '../PokeCard'
 

@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.a<{
-	isOpen: boolean
-}>`
+export const Container = styled.a`
 	cursor: pointer;
 	background-color: var(--shape);
 	border-radius: 1rem;

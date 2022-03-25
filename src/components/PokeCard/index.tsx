@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Image from 'next/image'
 import { PokemonNextApiResponse } from '../../types/pokemon'
 
@@ -8,12 +7,9 @@ interface PokeCardProps {
 }
 
 function PokeCard({ pokemon }: PokeCardProps) {
-	const [isOpen, setIsOpen] = useState(false)
-
 	return (
 		<>
 			<Container
-				isOpen={isOpen}
 				style={{
 					backgroundColor: `${pokemon.bgColor.replace(')', ', 0.45)')}`,
 				}}
