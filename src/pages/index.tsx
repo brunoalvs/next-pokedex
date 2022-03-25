@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
+import React from 'react'
+import { PokemonNextApiResponse } from '../types/pokemon'
+import { pokemons } from '../../public/pokemons'
 
-import { PokemonDataResponse } from '../types/pokemon'
 import { Home } from '../components/Templates/Home'
 import { PokemonList } from '../components/PokemonList'
 
-function HomePage({ pokemonsData }: { pokemonsData: PokemonDataResponse[] }) {
-	const [pokemons, setPokemons] = useState(pokemonsData)
-
+function HomePage({ pokemons }: { pokemons: PokemonNextApiResponse[] }) {
 	return (
 		<Home>
 			<PokemonList pokemons={pokemons} />
@@ -16,14 +14,10 @@ function HomePage({ pokemonsData }: { pokemonsData: PokemonDataResponse[] }) {
 }
 
 export async function getStaticProps() {
-	let res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
-	let data = await res.json()
-
 	return {
 		props: {
-			pokemonsData: data.results,
+			pokemons,
 		},
-		revalidate: 3 * 24 * 60 * 60, // Revalidating every 3 days
 	}
 }
 

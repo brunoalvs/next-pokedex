@@ -28,7 +28,10 @@ export interface PokemonType {
 	]
 }
 
-export interface PokemonDataResponse {
+export interface PokemonNextApiResponse {
+	id: number
 	name: string
 	url: string
+	bgColor: string
+	image: string
 }
