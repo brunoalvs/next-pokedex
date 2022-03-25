@@ -14,7 +14,6 @@ function PokeCard({ pokemon }: PokeCardProps) {
 					backgroundColor: `${pokemon.bgColor.replace(')', ', 0.45)')}`,
 				}}
 			>
-				<p className="pokemon-id">{pokemon.id.toString().padStart(3, '0')}</p>
 				<Image
 					src={pokemon.image}
 					alt=""
@@ -24,6 +23,7 @@ function PokeCard({ pokemon }: PokeCardProps) {
 					priority={pokemon.id > 3 ? false : true}
 				/>
 				<p className="pokemon-name">{pokemon.name}</p>
+				<p className="pokemon-id">{pokemon.id.toString().padStart(3, '0')}</p>
 			</Container>
 		</>
 	)

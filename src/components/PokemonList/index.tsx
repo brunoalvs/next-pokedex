@@ -11,10 +11,6 @@ interface PokemonListProps {
 }
 
 export function PokemonList({ pokemons }: PokemonListProps) {
-	useEffect(() => {
-		console.table(pokemons[0])
-	}, [])
-
 	return (
 		<Wrapper>
 			<Container>

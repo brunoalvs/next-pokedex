@@ -1,5 +1,6 @@
 import React from 'react'
 import { PokemonNextApiResponse } from '../types/pokemon'
+import { pokemons } from '../../public/pokemons'
 
 import { Home } from '../components/Templates/Home'
 import { PokemonList } from '../components/PokemonList'
@@ -13,14 +14,10 @@ function HomePage({ pokemons }: { pokemons: PokemonNextApiResponse[] }) {
 }
 
 export async function getStaticProps() {
-	let res = await fetch(process.env.API_URL + '/pokemons')
-	let pokemons = await res.json()
-
 	return {
 		props: {
 			pokemons,
 		},
-		revalidate: 3 * 24 * 60 * 60, // Revalidating every 3 days
 	}
 }
 
