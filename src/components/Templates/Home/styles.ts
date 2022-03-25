@@ -22,3 +22,15 @@ export const HeaderApp = styled.header`
 		font-size: 1.25rem;
 	}
 `
+
+export const InputSearch = styled.input`
+	background-color: #ebf3f5;
+	border-radius: 0.8rem;
+	color: #b1b8c5;
+	font-size: 1.1rem;
+	padding: 1rem;
+
+	&::placeholder {
+		color: #b1b8c5;
+	}
+`
