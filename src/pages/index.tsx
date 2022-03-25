@@ -11,16 +11,21 @@ function HomePage({ pokemons }: { pokemons: PokemonNextApiResponse[] }) {
 
 	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = e.target
+		const search = value
+			.toLowerCase()
+			.trim()
+			.replace(/[^a-zA-Z0-9]/g, '')
+
 		setSearch(value)
 
 		const filteredPokemonByName = pokemons.filter(pokemon =>
-			pokemon.name.toLowerCase().includes(value.toLowerCase())
+			pokemon.name.toLowerCase().includes(search.toLowerCase())
 		)
 		const filteredPokemonById = pokemons.filter(pokemon =>
-			pokemon.id.toString().includes(value)
+			pokemon.id.toString().includes(search)
 		)
 
-		if (value.length === 0) {
+		if (search.length === 0) {
 			setList(pokemons)
 		} else if (filteredPokemonByName.length > 0) {
 			setList(filteredPokemonByName)
@@ -28,8 +33,8 @@ function HomePage({ pokemons }: { pokemons: PokemonNextApiResponse[] }) {
 			setList(filteredPokemonById)
 		}
 
-		console.log(filteredPokemonByName, 'filteredPokemonByName')
-		console.log(filteredPokemonById, 'filteredPokemonById')
+		// console.log(filteredPokemonByName, 'filteredPokemonByName')
+		// console.log(filteredPokemonById, 'filteredPokemonById')
 	}
 
 	return (
