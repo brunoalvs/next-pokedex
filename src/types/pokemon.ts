@@ -8,24 +8,26 @@ export interface PokemonType {
 			}
 		}
 	}
-	stats: [
-		{
-			base_stat: number
-			effort: number
-			stat: {
-				name: string
-				url: string
-			}
+	stats: {
+		base_stat: number
+		effort: number
+		stat: {
+			name: string
+			url: string
 		}
-	]
-	types: [
-		{
-			slot: number
-			type: {
-				name: string
-			}
+	}[]
+	types: {
+		slot: number
+		type: {
+			name: string
 		}
-	]
+	}[]
+	abilities: {
+		is_hidden: boolean
+		ability: {
+			name: string
+		}
+	}[]
 }
 
 export interface PokemonNextApiResponse {
