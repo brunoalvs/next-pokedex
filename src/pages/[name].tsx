@@ -18,8 +18,8 @@ type PokemonPageProps = {
 			}
 		}[]
 		types: {
+			slot: number
 			type: {
-				slot: number
 				name: string
 			}
 		}[]
@@ -72,7 +72,7 @@ const Pokemon = ({ pokemon }: PokemonPageProps) => {
 					<ul>
 						{pokemon.types.map((type, index) => (
 							<li key={index}>
-								{type.type.name} - {type.type.slot}
+								{type.type.name} - {type.slot}
 							</li>
 						))}
 					</ul>

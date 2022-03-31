@@ -21,7 +21,7 @@ function PokeCard({ pokemon }: PokeCardProps) {
 					width={300}
 					height={300}
 					layout="responsive"
-					priority={pokemon.id > 3 ? false : true}
+					priority={pokemon.id <= 3 ? true : false}
 				/>
 				<p className="pokemon-name">{pokemon.name}</p>
 				<p className="pokemon-id">{pokemon.id.toString().padStart(3, '0')}</p>
