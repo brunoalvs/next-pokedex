@@ -1,49 +1,24 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { pokemons } from '../../public/pokemons'
+import { PokemonDetail } from '../components/Templates/PokemonDetail'
 
-type PokemonPageProps = {
-	pokemon: {
-		id: number
-		name: string
-		image: string
-		height: number
-		weight: number
-		bgColor: string
-		stats: {
-			base_stat: number
-			effort: number
-			stat: {
-				name: string
-			}
-		}[]
-		types: {
-			slot: number
-			type: {
-				name: string
-			}
-		}[]
-		abilities: {
-			is_hidden: boolean
-			ability: {
-				name: string
-			}
-		}[]
-	}
-}
+import { PokemonDetailData } from '../types/pokemon'
 
-const Pokemon = ({ pokemon }: PokemonPageProps) => {
+const Pokemon = ({ ...pokemon }: PokemonDetailData) => {
 	const router = useRouter()
 	const { name } = router.query
 
 	useEffect(() => {
-		console.table([pokemon])
+		console.log(pokemon)
 	}, [pokemon])
+
+	return <PokemonDetail {...pokemon} />
 
 	return (
 		<div
 			style={{
-				backgroundColor: `${pokemon.bgColor.replace(')', ', 0.45)')}`,
+				backgroundColor: `${pokemon.bgColor.replace(')', ', 0.8)')}`,
 			}}
 		>
 			<header>
@@ -113,19 +88,20 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 	const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`)
-	const pokemon = await res.json()
+	const data = await res.json()
 
 	const pokemonData = pokemons.filter(
 		pokemon => pokemon.name === params.name
 	)[0]
-	const data = {
+
+	const pokemon = {
 		...pokemonData,
-		...pokemon,
+		...data,
 	}
 
 	return {
 		props: {
-			pokemon: data,
+			...pokemon,
 		},
 	}
 }
