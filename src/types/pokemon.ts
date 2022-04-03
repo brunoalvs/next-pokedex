@@ -1,6 +1,34 @@
+export interface PokemonStats {
+	base_stat: number
+	effort: number
+	stat: {
+		name: string
+		url: string
+	}
+}
+
 export interface PokemonType {
 	id: number
 	name: string
+	height: number
+	weight: number
+	damage_relations: {
+		double_damage_from: [
+			{
+				name: string
+			}
+		]
+		double_damage_to: [
+			{
+				name: string
+			}
+		]
+		half_damage_from: [
+			{
+				name: string
+			}
+		]
+	}
 	sprites: {
 		other: {
 			['official-artwork']: {
@@ -8,24 +36,19 @@ export interface PokemonType {
 			}
 		}
 	}
-	stats: [
-		{
-			base_stat: number
-			effort: number
-			stat: {
-				name: string
-				url: string
-			}
+	stats: PokemonStats[]
+	types: {
+		slot: number
+		type: {
+			name: string
 		}
-	]
-	types: [
-		{
-			slot: number
-			type: {
-				name: string
-			}
+	}[]
+	abilities: {
+		is_hidden: boolean
+		ability: {
+			name: string
 		}
-	]
+	}[]
 }
 
 export interface PokemonNextApiResponse {
@@ -34,4 +57,9 @@ export interface PokemonNextApiResponse {
 	url: string
 	bgColor: string
 	image: string
+}
+
+export interface PokemonDetailData extends PokemonType {
+	image: string
+	bgColor: string
 }

@@ -17,10 +17,6 @@ export const Container = styled.a`
 		opacity: 0.95;
 		font-size: 1.2rem;
 
-		&::before {
-			content: '#';
-		}
-
 		@media (min-width: 600px) {
 			font-size: 1.5rem;
 		}

@@ -31,6 +31,7 @@ export const InputSearch = styled.div`
 	border-radius: 0.8rem;
 	padding: 0.8rem 1.2rem;
 	position: relative;
+	margin-top: 1rem;
 
 	img {
 		width: 1.25rem;

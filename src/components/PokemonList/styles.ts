@@ -11,8 +11,12 @@ export const Wrapper = styled.div`
 export const Container = styled.section`
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 1fr;
 	gap: 1rem;
+
+	@media (min-width: 430px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
 
 	@media (min-width: 600px) {
 		grid-template-columns: repeat(3, 1fr);
