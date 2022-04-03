@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { PokemonDetailData } from '../../../types/pokemon'
 import { BackButton } from '../../BackButton'
+import Image from 'next/image'
 
 import { Container, Content, Header } from './styles'
 
@@ -16,7 +17,7 @@ export const PokemonDetail = ({ ...pokemon }: PokemonDetailData) => {
 					}}
 				/>
 			</Header>
-			<Content>
+			<Content bgColor={pokemon.bgColor}>
 				<figure>
 					<img src={pokemon.image} alt={pokemon.name} />
 				</figure>
