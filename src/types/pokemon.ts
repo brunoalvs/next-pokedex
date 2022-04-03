@@ -1,3 +1,12 @@
+export interface PokemonStats {
+	base_stat: number
+	effort: number
+	stat: {
+		name: string
+		url: string
+	}
+}
+
 export interface PokemonType {
 	id: number
 	name: string
@@ -27,14 +36,7 @@ export interface PokemonType {
 			}
 		}
 	}
-	stats: {
-		base_stat: number
-		effort: number
-		stat: {
-			name: string
-			url: string
-		}
-	}[]
+	stats: PokemonStats[]
 	types: {
 		slot: number
 		type: {
