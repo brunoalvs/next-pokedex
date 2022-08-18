@@ -1,5 +1,5 @@
 
-function Home (): JSX.Element {
+function Home () {
   return (
     <div className="container">
       <h1>Hello Next.js</h1>
