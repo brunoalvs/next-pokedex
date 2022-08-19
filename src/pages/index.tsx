@@ -1,5 +1,5 @@
 
-function Home () {
+function Home({ ...props }) {
   return (
     <div className="container">
       <h1>Hello Next.js</h1>
