@@ -29,6 +29,12 @@
       "@/pages/*": [
         "src/pages/*"
       ],
+      "@/templates/*": [
+        "src/templates/*"
+      ],
+      "@/tests/*": [
+        "src/tests/*"
+      ],
     }
   },
   "include": [
