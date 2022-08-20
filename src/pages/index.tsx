@@ -1,6 +1,6 @@
-import { Layout } from "@/templates/Layout"
+import { Layout } from '@/templates/Layout'
 
-function Home({ ...props }) {
+function Home() {
   return (
     <Layout>
       <div className="container">

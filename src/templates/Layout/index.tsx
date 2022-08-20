@@ -1,12 +1,12 @@
 
 interface LayoutProps {
-    children: React.ReactNode
+  children: React.ReactNode
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
-    return (
-        <div>
-            {children}
-        </div>
-    )
+export const Layout = ({ children }: LayoutProps) => {
+  return (
+    <div>
+      {children}
+    </div>
+  )
 }
