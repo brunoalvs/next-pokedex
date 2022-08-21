@@ -10,6 +10,7 @@ const customJestConfig = {
     '!**/*.d.ts',
     '!**/node_modules/**',
     '!./src/pages/_app.tsx',
+    '!./src/pages/_document.tsx',
   ],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
