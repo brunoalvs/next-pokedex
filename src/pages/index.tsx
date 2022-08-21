@@ -1,6 +1,8 @@
+import { useEffect } from 'react'
 import { PokeCard } from '@/components/PokeCard'
 import { Layout } from '@/templates/Layout'
 import { loadPokemons } from 'src/lib/load-pokemon'
+import { getPokemonInfo } from 'src/lib/get-pokemon-info'
 import { NamedAPIResource, Pokemon } from 'src/types'
 
 interface HomeProps {
@@ -8,6 +10,11 @@ interface HomeProps {
 }
 
 function Home({ pokemons }: HomeProps) {
+
+  useEffect(() => {
+    // eslint-disable-next-line
+    console.log('pokemons', pokemons)
+  }, [pokemons])
 
   return (
     <Layout>
@@ -28,9 +35,9 @@ export async function getStaticProps() {
   const data: NamedAPIResource[] = await loadPokemons()
 
   const pokemons = await Promise.all(data.map(async (pokemon) => {
-    const pokemonInfo = await fetch(pokemon.url)
-    const result: Pokemon[] = await pokemonInfo.json()
-    return result
+    const info = await getPokemonInfo(pokemon.name)
+
+    return info
   }))
 
   return {
