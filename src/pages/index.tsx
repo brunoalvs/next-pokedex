@@ -36,7 +36,6 @@ export async function getStaticProps() {
 
   const pokemons = await Promise.all(data.map(async (pokemon) => {
     const info = await getPokemonInfo(pokemon.name)
-
     return info
   }))
 
