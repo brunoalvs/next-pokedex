@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { PokeCard } from '@/components/PokeCard'
 import { Layout } from '@/templates/Layout'
-import { loadPokemons } from 'src/lib/load-pokemon'
 import { getPokemonInfo } from 'src/lib/get-pokemon-info'
+import { loadPokemons } from 'src/lib/load-pokemon'
 import { NamedAPIResource, Pokemon } from 'src/types'
 
 interface HomeProps {
@@ -10,11 +9,6 @@ interface HomeProps {
 }
 
 function Home({ pokemons }: HomeProps) {
-
-  useEffect(() => {
-    // eslint-disable-next-line
-    console.log('pokemons', pokemons)
-  }, [pokemons])
 
   return (
     <Layout>
