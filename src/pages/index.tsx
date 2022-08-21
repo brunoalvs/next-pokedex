@@ -1,7 +1,7 @@
 import { PokeCard } from '@/components/PokeCard'
 import { Layout } from '@/templates/Layout'
-import { getPokemonInfo } from 'src/lib/get-pokemon-info'
-import { loadPokemons } from 'src/lib/load-pokemon'
+import { getPokemonInfo } from '@/utils/get-pokemon-info'
+import { loadPokemons } from '@/utils/load-pokemon'
 import { NamedAPIResource, Pokemon } from 'src/types'
 
 interface HomeProps {

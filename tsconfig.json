@@ -35,6 +35,9 @@
       "@/tests/*": [
         "src/tests/*"
       ],
+      "@/utils/*": [
+        "src/utils/*"
+      ]
     }
   },
   "include": [

@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getPokemonInfo } from 'src/lib/get-pokemon-info'
-import { loadPokemons } from 'src/lib/load-pokemon'
+import { getPokemonInfo } from '@/utils/get-pokemon-info'
+import { loadPokemons } from '@/utils/load-pokemon'
 import { NamedAPIResource } from 'src/types'
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
