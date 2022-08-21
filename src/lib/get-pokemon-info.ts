@@ -14,7 +14,8 @@ export async function getPokemonInfo(name: string): Promise<Pokemon> {
           front_default: data.sprites.other['official-artwork'].front_default,
         }
       }
-    }
+    },
+    stats: data.stats
   }
 
   return result;
