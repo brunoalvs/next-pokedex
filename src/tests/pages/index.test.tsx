@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import Home from '@/pages/index'
 
 import '@testing-library/jest-dom'
@@ -47,4 +48,10 @@ describe('HomePage:', () => {
     const h1 = screen.getByText('Hello Next.js')
     expect(h1).toBeInTheDocument();
   })
+
+  it('renders the features page unchanged', () => {
+    const tree = renderer.create(<Home pokemons={mockData} />).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
 })
