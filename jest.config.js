@@ -5,6 +5,7 @@ const createJestConfig = nextJest({
 })
 
 const customJestConfig = {
+  collectCoverage: true,
   collectCoverageFrom: [
     '**/*.{ts,tsx}',
     '!**/*.d.ts',
@@ -12,6 +13,9 @@ const customJestConfig = {
     '!./src/pages/_app.tsx',
     '!./src/pages/_document.tsx',
   ],
+  coverageReporters: ['text', 'lcov', 'html'],
+  coverageDirectory: '<rootDir>/coverage/',
+  globalSetup: '<rootDir>/setupJest.js',
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
@@ -24,4 +28,3 @@ const customJestConfig = {
 }
 
 module.exports = createJestConfig(customJestConfig)
-
