@@ -18,8 +18,10 @@ const customJestConfig = {
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@/templates/(.*)$': '<rootDir>/src/templates/$1',
     '^@/tests/(.*)$': '<rootDir>/src/tests/$1',
+    '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
 }
 
 module.exports = createJestConfig(customJestConfig)
+
