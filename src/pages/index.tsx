@@ -1,8 +1,7 @@
 import { PokeCard } from '@/components/PokeCard'
 import { Layout } from '@/templates/Layout'
-import { getPokemonInfo } from '@/utils/get-pokemon-info'
-import { loadPokemons } from '@/utils/load-pokemon'
-import { NamedAPIResource, Pokemon } from 'src/types'
+import { Pokemon } from 'src/types'
+import { getPokemons } from './api/pokemons'
 
 interface HomeProps {
   pokemons: Pokemon[]
@@ -26,12 +25,7 @@ function Home({ pokemons }: HomeProps) {
 export default Home
 
 export async function getStaticProps() {
-  const data: NamedAPIResource[] = await loadPokemons()
-
-  const pokemons = await Promise.all(data.map(async (pokemon) => {
-    const info = await getPokemonInfo(pokemon.name)
-    return info
-  }))
+  const pokemons = await getPokemons()
 
   return {
     props: {
