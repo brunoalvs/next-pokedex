@@ -15,7 +15,6 @@ const customJestConfig = {
   ],
   coverageReporters: ['text', 'lcov', 'html'],
   coverageDirectory: '<rootDir>/coverage/',
-  globalSetup: '<rootDir>/setupJest.js',
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
