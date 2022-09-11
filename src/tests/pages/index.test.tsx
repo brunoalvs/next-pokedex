@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import renderer from 'react-test-renderer'
-import Home from '@/pages/index'
+import Home, { getStaticProps } from '@/pages/index'
+import { getPokemons } from '@/pages/api/pokemons'
 
-import '@testing-library/jest-dom'
 import mockData from 'src/tests/mock/listPokemons.json'
 
 describe('HomePage:', () => {
