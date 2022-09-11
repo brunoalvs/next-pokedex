@@ -1,7 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { NamedAPIResource, Pokemon } from 'src/types'
+import { NamedAPIResource } from '@/types/default'
+import { Pokemon } from '@/types/pokemons'
 
 export async function loadPokemons() {
   const res = await fetch('https://pokeapi.co/api/v2/pokemon/')
@@ -11,8 +12,8 @@ export async function loadPokemons() {
 }
 
 export async function getPokemonInfo(name: string): Promise<Pokemon> {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-  const data = await res.json();
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+  const data = await res.json()
 
   const result: Pokemon = {
     id: data.id,
@@ -22,28 +23,32 @@ export async function getPokemonInfo(name: string): Promise<Pokemon> {
       other: {
         'official-artwork': {
           front_default: data.sprites.other['official-artwork'].front_default,
-        }
-      }
+        },
+      },
     },
-    stats: data.stats
+    stats: data.stats,
   }
 
-  return result;
+  return result
 }
 
 export const getPokemons = async () => {
   const data: NamedAPIResource[] = await loadPokemons()
 
-  const pokemons = await Promise.all(data.map(async (pokemon) => {
-    const info = await getPokemonInfo(pokemon.name)
-    return info
-  }))
+  const pokemons = await Promise.all(
+    data.map(async (pokemon) => {
+      const info = await getPokemonInfo(pokemon.name)
+      return info
+    })
+  )
 
   return pokemons
 }
 
-export default async function getPokemonsHandler (req: NextApiRequest, res: NextApiResponse) {
-
+export default async function getPokemonsHandler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method Not Allowed' })
     return
