@@ -1,3 +1,4 @@
+import { Layout } from '@/templates/Layout'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
@@ -6,11 +7,18 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Pokédex</title>
-        <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+        <link
+          rel='shortcut icon'
+          href='/favicon.svg'
+          type='image/svg'
+        />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }
 
 export default MyApp
+

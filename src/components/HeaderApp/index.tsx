@@ -1,7 +1,7 @@
 export const HeaderApp = () => {
   return (
     <header>
-      <h1 className="logo">Pokedex</h1>
+      <h1>Pokedex</h1>
     </header>
   )
 }

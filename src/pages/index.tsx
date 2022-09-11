@@ -1,6 +1,5 @@
-import { PokeCard } from '@/components/PokeCard'
-import { Layout } from '@/templates/Layout'
-import { Pokemon } from 'src/types'
+import PokeCard from '@/components/PokeCard'
+import { Pokemon } from '@/types/pokemons'
 import { getPokemons } from './api/pokemons'
 
 interface HomeProps {
@@ -8,28 +7,26 @@ interface HomeProps {
 }
 
 function Home({ pokemons }: HomeProps) {
-
   return (
-    <Layout>
-      <div className="container">
-        <h1>Hello Next.js</h1>
-
-        {pokemons.map((pokemon, index) => (
-          <PokeCard key={index} pokemon={pokemon} />
-        ))}
-      </div>
-    </Layout>
+    <div data-testid='homepage'>
+      {pokemons.map((pokemon, index) => (
+        <PokeCard
+          key={index}
+          pokemon={pokemon}
+        />
+      ))}
+    </div>
   )
 }
-
-export default Home
 
 export async function getStaticProps() {
   const pokemons = await getPokemons()
 
   return {
     props: {
-      pokemons
-    }
+      pokemons,
+    },
   }
 }
+
+export default Home
