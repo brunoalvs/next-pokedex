@@ -1,18 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import { PokeCard } from '@/components/PokeCard'
-import { Pokemon } from 'src/types'
+import PokeCard from '@/components/PokeCard'
+import { Pokemon } from '@/types/pokemons'
 
-const mockPokecardProps: Pokemon = {
-  id: 1,
-  name: 'bulbasaur',
-  sprites: {
-    other: {
-      'official-artwork': {
-        front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-      }
-    }
-  }
-}
+import { result } from '@/mock/pokemons'
+
+const mockPokecardProps: Pokemon = result[0]
 
 describe('PokeCard:', () => {
   beforeEach(() => {
@@ -24,13 +16,14 @@ describe('PokeCard:', () => {
   })
 
   it('should render the pokemon id number received by props', () => {
-    const element = screen.getByText(`#${mockPokecardProps.id.toString().padStart(3, '0')}`)
+    const element = screen.getByText(
+      `#${mockPokecardProps.id.toString().padStart(3, '0')}`
+    )
     expect(element).toBeTruthy()
   })
 
   it('should render the pokemon image received by props', () => {
-    const image = screen.getByTestId('pokemon-image')
+    const image = screen.getByTestId(`pokemon-image-${mockPokecardProps.id}`)
     expect(image).toBeTruthy()
   })
-
 })

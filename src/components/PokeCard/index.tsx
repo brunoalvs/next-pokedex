@@ -1,29 +1,34 @@
-// import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { memo } from 'react'
-import { Pokemon } from 'src/types'
+import Image from 'next/image'
+import { Pokemon } from '@/types/pokemons'
+import { Container } from './styles'
 
 interface PokeCardProps {
   pokemon: Pokemon
 }
 
-const PokeCard = memo(({ pokemon }: PokeCardProps) => {
-
+const PokeCard = ({ pokemon }: PokeCardProps) => {
   return (
-    <div>
+    <Container data-testid={`pokecard-${pokemon.id}`}>
       <p>{`#${pokemon.id?.toString().padStart(3, '0')}`}</p>
-      <Image
-        data-testid="pokemon-image"
-        width={300}
-        height={300}
-        src={pokemon.sprites?.other?.['official-artwork']?.front_default}
-        alt={`${pokemon.name} official artwork`}
-      />
+      <figure
+        style={{
+          width: '300px',
+        }}
+      >
+        <Image
+          data-testid={`pokemon-image-${pokemon.id}`}
+          width={300}
+          height={300}
+          src={pokemon.sprites?.other?.['official-artwork']?.front_default}
+          alt={`${pokemon.name} official artwork`}
+        />
+      </figure>
       <h3>{pokemon.name}</h3>
-    </div>
+    </Container>
   )
-})
+}
 
 PokeCard.displayName = 'PokeCard'
 
-export { PokeCard }
+export default memo(PokeCard)
