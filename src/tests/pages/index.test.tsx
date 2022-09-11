@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import renderer from 'react-test-renderer';
+import { render, screen } from '@testing-library/react'
+import renderer from 'react-test-renderer'
 import Home from '@/pages/index'
 
 import '@testing-library/jest-dom'
@@ -9,8 +9,8 @@ describe('HomePage:', () => {
   it('should render correctly', () => {
     render(<Home pokemons={mockData} />)
 
-    const h1 = screen.getByText('Hello Next.js')
-    expect(h1).toBeInTheDocument();
+    const testId = screen.getByTestId('homepage')
+    expect(testId).toBeTruthy()
   })
 
   it('renders the features page unchanged', () => {
@@ -18,4 +18,12 @@ describe('HomePage:', () => {
     expect(tree).toMatchSnapshot()
   })
 
+  it('should render the pokemons list', () => {
+    render(<Home pokemons={mockData} />)
+
+    mockData.forEach((item) => {
+      const element = screen.getByTestId(`pokecard-${item.id}`)
+      expect(element).toBeTruthy()
+    })
+  })
 })
