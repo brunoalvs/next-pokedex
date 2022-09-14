@@ -25,5 +25,9 @@ describe('HomePage:', () => {
       const element = screen.getByTestId(`pokecard-${item.id}`)
       expect(element).toBeTruthy()
     })
+
+    expect(screen.getByTestId('homepage').children.length).toEqual(
+      mockData.length
+    )
   })
 })

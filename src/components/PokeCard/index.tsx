@@ -7,7 +7,7 @@ interface PokeCardProps {
   pokemon: Pokemon
 }
 
-const PokeCard = ({ pokemon }: PokeCardProps) => {
+const PokeCard: React.FC<PokeCardProps> = ({ pokemon }: PokeCardProps) => {
   return (
     <Container data-testid={`pokecard-${pokemon.id}`}>
       <p>{`#${pokemon.id?.toString().padStart(3, '0')}`}</p>

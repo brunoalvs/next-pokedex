@@ -12,7 +12,9 @@ export type Pokemon = {
   stats: PokemonStat[]
 }
 
-export type ResultGetPokemons = {
+export type ResponseGetPokemons = {
+  count: number
+  next: string | null
+  previous: string | null
   results: Pokemon[]
 }
-
