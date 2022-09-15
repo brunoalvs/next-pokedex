@@ -26,7 +26,6 @@ const customJestConfig = {
     '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/src/tests/setupTests.ts'],
-  // testEnvironment: 'jest-environment-jsdom',
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['/node_modules', '/.next/'],
 }
