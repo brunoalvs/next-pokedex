@@ -13,8 +13,8 @@ const customJestConfig = {
     '!./src/pages/_app.tsx',
     '!./src/pages/_document.tsx',
   ],
-  coverageReporters: ['text', 'lcov', 'html'],
   coverageDirectory: '<rootDir>/coverage/',
+  coverageReporters: ['text', 'lcov', 'html'],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
@@ -25,7 +25,10 @@ const customJestConfig = {
     '^@/types/(.*)$': '<rootDir>/src/types/$1',
     '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
   },
-  testEnvironment: 'jest-environment-jsdom',
+  setupFilesAfterEnv: ['<rootDir>/src/tests/setupTests.ts'],
+  // testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['/node_modules', '/.next/'],
 }
 
 module.exports = createJestConfig(customJestConfig)
