@@ -1,4 +1,4 @@
-import PokeCard from '@/components/PokeCard'
+import { PokeList } from '@/components/PokeList'
 import { Pokemon } from '@/types/pokemons'
 import { getPokemons } from './api/pokemons'
 
@@ -9,12 +9,7 @@ interface HomeProps {
 function Home({ pokemons }: HomeProps) {
   return (
     <div data-testid='homepage'>
-      {pokemons.map((pokemon, index) => (
-        <PokeCard
-          key={index}
-          pokemon={pokemon}
-        />
-      ))}
+      <PokeList pokemons={pokemons} />
     </div>
   )
 }
