@@ -1,4 +1,4 @@
-import { Layout } from '@/templates/Layout'
+import { Layout } from '@/components/Layout'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
@@ -21,4 +21,3 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp
-
