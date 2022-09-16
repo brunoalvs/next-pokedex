@@ -1,7 +1,8 @@
-import Home from '@/pages/index'
 import { render, screen } from '@testing-library/react'
+import { mocked } from 'jest-mock'
 
-import { result } from '../mock/pokemons'
+import Home, { getStaticProps } from '@/pages/index'
+import { result } from '@/tests/mock/pokemons'
 
 import { getPokemons } from '../../pages/api/pokemons'
 
@@ -10,9 +11,21 @@ jest.mock('../../pages/api/pokemons')
 describe('Home Page', () => {
   it('renders correctly', () => {
     render(<Home pokemons={result} />)
-
     expect(screen.getByTestId('homepage')).toBeInTheDocument()
   })
 
-  it.todo('loads initial data')
+  it('initial', async () => {
+    const getPokemonsMocked = mocked(getPokemons)
+    // getPokemonsMocked.mockReturnValue(Promise.resolve(result))
+    getPokemonsMocked.mockResolvedValue(result)
+
+    const response = await getStaticProps()
+    expect(response).toEqual(
+      expect.objectContaining({
+        props: {
+          pokemons: result,
+        },
+      })
+    )
+  })
 })

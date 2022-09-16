@@ -1,43 +1,15 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { NamedAPIResource } from '@/types/default'
-import { Pokemon } from '@/types/pokemons'
-
-export async function loadPokemons() {
-  const res = await fetch('https://pokeapi.co/api/v2/pokemon/')
-  const data = await res.json()
-
-  return data.results
-}
-
-export async function getPokemonInfo(name: string): Promise<Pokemon> {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-  const data = await res.json()
-
-  const result: Pokemon = {
-    id: data.id,
-    name: data.name,
-    sprites: {
-      front_default: data.sprites.front_default,
-      other: {
-        'official-artwork': {
-          front_default: data.sprites.other['official-artwork'].front_default,
-        },
-      },
-    },
-    stats: data.stats,
-  }
-
-  return result
-}
+import { getPokemons as loadPokemons } from '@/utils/get-pokemons'
+import { getPokemonInfoToCard } from '@/utils/get-pokemon-infocard'
 
 export const getPokemons = async () => {
-  const data: NamedAPIResource[] = await loadPokemons()
+  const data = await loadPokemons()
 
   const pokemons = await Promise.all(
-    data.map(async (pokemon) => {
-      const info = await getPokemonInfo(pokemon.name)
+    data.results.map(async (pokemon) => {
+      const info = await getPokemonInfoToCard(pokemon.name)
       return info
     })
   )
