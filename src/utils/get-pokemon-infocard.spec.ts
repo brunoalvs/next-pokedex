@@ -2,7 +2,7 @@
 
 import { getPokemonInfoToCard } from '@/utils/get-pokemon-infocard'
 
-const POKEMON_NAME: string = 'bulbasaur'
+const POKEMON_NAME = 'bulbasaur'
 const MockResponseRequest = {
   id: 1,
   name: 'bulbasaur',
