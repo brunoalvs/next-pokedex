@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react'
 import PokeCard from '@/components/PokeCard'
 import { Pokemon } from '@/types/pokemons'
 
-import { result } from '@/mock/pokemons'
+import { results } from '@/mock/pokemons'
 
-const mockPokecardProps: Pokemon = result[0]
+const mockPokecardProps: Pokemon = results[0]
 
 describe('PokeCard:', () => {
   beforeEach(() => {

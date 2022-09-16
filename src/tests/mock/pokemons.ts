@@ -1,6 +1,6 @@
 import { Pokemon } from '@/types/pokemons'
 
-export const result: Pokemon[] = [
+export const results: Pokemon[] = [
   {
     id: 1,
     name: 'bulbasaur',
