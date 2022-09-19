@@ -29,19 +29,7 @@ describe('Api Routes Pokemons', () => {
     const data = await response.json()
 
     expect(data).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          id: expect.any(Number),
-          name: expect.any(String),
-          sprites: expect.objectContaining({
-            other: expect.objectContaining({
-              'official-artwork': expect.objectContaining({
-                front_default: expect.any(String),
-              }),
-            }),
-          }),
-        }),
-      ])
+      expect.objectContaining(MockResponseRequest),
     )
   })
 })
