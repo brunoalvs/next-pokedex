@@ -1,17 +1,16 @@
-import { getPokemonInfoToCard } from '@/utils/get-pokemon-infocard'
+import {fetchPokemons} from './fetch-pokemons'
 
-const POKEMON_NAME = 'bulbasaur'
 const MockResponseRequest = {
-  id: 1,
-  name: 'bulbasaur',
-  sprites: {
-    other: {
-      'official-artwork': {
-        front_default:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
-      },
+  count: 1118,
+  next: 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20',
+  previous: null,
+  results: [
+    {
+      name: 'bulbasaur',
+
+      url: 'https://pokeapi.co/api/v2/pokemon/1/',
     },
-  },
+  ],
 }
 
 beforeAll(() => {
@@ -24,14 +23,14 @@ beforeAll(() => {
 
 afterAll(() => (global.fetch = global.fetch))
 
-describe('getPokemonInfoToCard', () => {
+describe('fetchPokemons', () => {
   it('should use fetch when the function is called', () => {
-    getPokemonInfoToCard(POKEMON_NAME)
+    fetchPokemons('https://pokeapi.co/api/v2/pokemon')
     expect(fetch).toHaveBeenCalledTimes(1)
   })
 
   it('should return a list of pokemons', async () => {
-    const result = await getPokemonInfoToCard(POKEMON_NAME)
+    const result = await fetchPokemons('https://pokeapi.co/api/v2/pokemon')
     expect(result).toEqual(MockResponseRequest)
   })
 })

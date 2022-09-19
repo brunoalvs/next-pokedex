@@ -1,6 +1,6 @@
 import { PokeList } from '@/components/PokeList'
 import { Pokemon } from '@/types/pokemons'
-import { getPokemons } from './api/pokemons'
+import { loadPokemons } from '@/utils/load-pokemons'
 
 interface HomeProps {
   pokemons: Pokemon[]
@@ -15,7 +15,7 @@ function Home({ pokemons }: HomeProps) {
 }
 
 export async function getStaticProps() {
-  const pokemons = await getPokemons()
+  const pokemons = await loadPokemons()
 
   return {
     props: {

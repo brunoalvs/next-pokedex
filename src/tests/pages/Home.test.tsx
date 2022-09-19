@@ -3,10 +3,9 @@ import { mocked } from 'jest-mock'
 
 import Home, { getStaticProps } from '@/pages/index'
 import { results } from '@/tests/mock/pokemons'
+import { loadPokemons } from '@/utils/load-pokemons'
 
-import { getPokemons } from '../../pages/api/pokemons'
-
-jest.mock('../../pages/api/pokemons')
+jest.mock('../../utils/load-pokemons')
 
 describe('Home Page', () => {
   it('renders correctly', () => {
@@ -15,7 +14,7 @@ describe('Home Page', () => {
   })
 
   it('initial', async () => {
-    const getPokemonsMocked = mocked(getPokemons)
+    const getPokemonsMocked = mocked(loadPokemons)
     getPokemonsMocked.mockResolvedValue(results)
 
     const response = await getStaticProps()

@@ -1,15 +1,4 @@
-type GetPokemonInfoToCardResponse = {
-  id: number
-  name: string
-  sprites: {
-    front_default: string
-    other: {
-      'official-artwork': {
-        front_default: string
-      }
-    }
-  }
-}
+import { GetPokemonInfoToCardResponse } from '@/types/default'
 
 export const getPokemonInfoToCard = async (
   name: string
@@ -21,7 +10,6 @@ export const getPokemonInfoToCard = async (
     id: data.id,
     name: data.name,
     sprites: {
-      front_default: data.sprites.front_default,
       other: {
         'official-artwork': {
           front_default: data.sprites.other['official-artwork'].front_default,

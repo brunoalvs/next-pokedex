@@ -9,3 +9,15 @@ export type GetPokemonsResponse = {
     url: string
   }[]
 }
+
+export type GetPokemonInfoToCardResponse = {
+  id: number
+  name: string
+  sprites: {
+    other: {
+      'official-artwork': {
+        front_default: string
+      }
+    }
+  }
+}

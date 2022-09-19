@@ -1,0 +1,16 @@
+import { getPokemons } from './get-pokemons'
+import { getPokemonInfoToCard } from './get-pokemon-infocard'
+
+export const loadPokemons = async () => {
+  try {
+    const pokemons = await getPokemons()
+    const pokemonsInfo = await Promise.all(
+      pokemons.results.map(async pokemon => getPokemonInfoToCard(pokemon.name))
+    )
+    return pokemonsInfo
+  } catch (err) {
+    console.error('error', err)
+    return err
+
+  }
+}
