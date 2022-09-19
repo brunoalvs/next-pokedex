@@ -9,8 +9,6 @@ export const loadPokemons = async () => {
     )
     return pokemonsInfo
   } catch (err) {
-    console.error('error', err)
     return err
-
   }
 }

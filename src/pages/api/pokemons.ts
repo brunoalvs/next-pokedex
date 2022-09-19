@@ -6,12 +6,13 @@ export default async function getPokemonsHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+
   try {
     const pokemons = await loadPokemons()
     res.status(200)
-    res.json({ pokemons })
+    return res.json({ pokemons })
   } catch (err) {
     res.status(500)
-    res.json({ error: err })
+    return res.json({ error: err })
   }
 }
