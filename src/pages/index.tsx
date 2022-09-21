@@ -11,18 +11,15 @@ function Home({ pokemons }: HomeProps) {
   const [pokemonsList, setPokemonsList] = useState(pokemons)
 
   const morePokemons = async () => {
+    console.log(pokemonsList.length)
     const newPokemons = await loadPokemons(pokemonsList.length)
-    setPokemonsList([...pokemonsList, ...newPokemons as Pokemon[]])
+    setPokemonsList([...pokemonsList, ...(newPokemons as Pokemon[])])
   }
 
   return (
     <div data-testid='homepage'>
       <PokeList pokemons={pokemonsList} />
-      <button
-        onClick={async () => morePokemons()}
-      >
-        Load More
-      </button>
+      <button onClick={async () => morePokemons()}>Load More</button>
     </div>
   )
 }
