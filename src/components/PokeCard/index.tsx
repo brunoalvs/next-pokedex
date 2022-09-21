@@ -13,13 +13,15 @@ const PokeCard: React.FC<PokeCardProps> = ({ pokemon }: PokeCardProps) => {
       <p>{`#${pokemon.id?.toString().padStart(3, '0')}`}</p>
       <figure
         style={{
-          width: '300px',
+          width: '100%',
+          margin: 0,
         }}
       >
         <Image
           data-testid={`pokemon-image-${pokemon.id}`}
           width={300}
           height={300}
+          layout='responsive'
           src={pokemon.sprites?.other?.['official-artwork']?.front_default}
           alt={`${pokemon.name} official artwork`}
         />
