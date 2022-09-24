@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import { PokeList } from '@/components/PokeList'
 import { Pokemon } from '@/types/pokemons'
 import { loadPokemons } from '@/utils/load-pokemons'
-import { useState } from 'react'
 
 interface HomeProps {
   pokemons: Pokemon[]
@@ -11,7 +11,6 @@ function Home({ pokemons }: HomeProps) {
   const [pokemonsList, setPokemonsList] = useState(pokemons)
 
   const morePokemons = async () => {
-    console.log(pokemonsList.length)
     const newPokemons = await loadPokemons(pokemonsList.length)
     setPokemonsList([...pokemonsList, ...(newPokemons as Pokemon[])])
   }

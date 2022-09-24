@@ -1,3 +1,5 @@
+import { PokemonStat } from './pokemons'
+
 export type NamedAPIResource = {
   name: string
   url: string
@@ -20,4 +22,10 @@ export type GetPokemonInfoToCardResponse = {
       }
     }
   }
+}
+
+export type PokemonDetail = {
+  height: number
+  weight: number
+  stats: PokemonStat
 }
