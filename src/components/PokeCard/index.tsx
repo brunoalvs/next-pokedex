@@ -1,8 +1,9 @@
 import { memo } from 'react'
 import Image from 'next/image'
-import { Pokemon } from '@/types/pokemons'
-import { Container, Cover } from './styles'
 import Link from 'next/link'
+import { Pokemon } from '@/types/pokemons'
+
+import { Container, Cover, Title, Text } from './styles'
 
 interface PokeCardProps {
   pokemon: Pokemon
@@ -24,8 +25,8 @@ const PokeCard: React.FC<PokeCardProps> = ({ pokemon }: PokeCardProps) => {
             alt={`A ${pokemon.name} official artwork`}
           />
         </Cover>
-        <h3>{pokemon.name}</h3>
-        <p>{`#${pokemon.id?.toString().padStart(3, '0')}`}</p>
+        <Title>{pokemon.name}</Title>
+        <Text>{`#${pokemon.id?.toString().padStart(3, '0')}`}</Text>
       </Container>
     </Link>
   )
