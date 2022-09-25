@@ -9,7 +9,10 @@ export type Pokemon = {
       }
     }
   }
+  height?: number
+  weight?: number
   stats?: PokemonStat[]
+  type?: PokemonType[]
 }
 
 type PokemonStat = {
@@ -19,4 +22,12 @@ type PokemonStat = {
   }
   effort: number
   base_stat: number
+}
+
+type PokemonType = {
+  slot: number
+  type: {
+    name: string
+    url: string
+  }
 }

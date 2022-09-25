@@ -20,7 +20,8 @@ const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
     <div>
       <h2>{pokemon.name}</h2>
       <p>{pokemon.id.toString().padStart(4, '#00')}</p>
-      <Image width={120} height={120} alt={`${pokemon.name} sprite`} src={pokemon.sprites.front_default ?? ''} style={{ imageRendering: 'pixelated' }} />
+      <Image width={240} height={240} alt={`${pokemon.name} sprite`} src={pokemon.sprites.front_default ?? ''} style={{ imageRendering: 'pixelated' }} />
+      <Image width={512} height={512} alt={`${pokemon.name} sprite`} src={pokemon.sprites.other['official-artwork'].front_default} />
     </div>
   )
 }
@@ -43,7 +44,7 @@ export const getStaticProps = async ({ params }: {
 }
 
 export const getStaticPaths: GetStaticPaths<QParams> = async () => {
-  const res = await getPokemons(0)
+  const res = await getPokemons()
 
   const paths = res.results.map((pokemon) => {
     return {

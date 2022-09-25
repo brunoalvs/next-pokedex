@@ -17,6 +17,9 @@ export const getPokemonByName = async ( name: string): Promise<Pokemon> => {
       },
     },
     stats: data.stats,
+    type: data.type,
+    height: data.height,
+    weight: data.weight,
   }
 
   return result
