@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { Layout } from '@/components/Layout'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyles } from '@/components/globalStyles'
-import { lightTheme, darkTheme } from '../theme/'
+import { lightTheme, darkTheme } from '../theme'
 
 function App({ Component, pageProps }: AppProps) {
   const [theme] = useState('light');
