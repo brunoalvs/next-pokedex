@@ -12,7 +12,7 @@ export type Pokemon = {
   height?: number
   weight?: number
   stats?: PokemonStat[]
-  type?: PokemonType[]
+  types?: PokemonType[]
 }
 
 type PokemonStat = {
