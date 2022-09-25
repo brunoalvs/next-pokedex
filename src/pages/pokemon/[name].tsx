@@ -1,6 +1,6 @@
 import { PokeDetail } from '@/components/PokeDetail'
 import { QParams } from '@/types/global'
-import { Pokemon } from '@/types/pokemons'
+import { Pokemon, PokemonType } from '@/types/pokemons'
 import { getPokemonByName } from '@/utils/get-pokemon-by-name'
 import { getPokemons } from '@/utils/get-pokemons'
 import { GetStaticPaths } from 'next'
@@ -18,7 +18,7 @@ const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
 
   return (
     <div>
-      <PokeDetail name='Bulbasaur' jpname='フシギダネ' />
+      <PokeDetail id={pokemon.id} name={pokemon.name} jpname='フシギダネ' sprite={pokemon.sprites.other['official-artwork'].front_default} types={pokemon.types as PokemonType[]} />
       {/* <h2>{pokemon.name}</h2>
       <p>{pokemon.id.toString().padStart(4, '#00')}</p>
       <Image width={240} height={240} alt={`${pokemon.name} sprite`} src={pokemon.sprites.front_default ?? ''} style={{ imageRendering: 'pixelated' }} />

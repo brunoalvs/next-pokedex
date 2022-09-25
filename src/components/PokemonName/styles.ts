@@ -22,6 +22,7 @@ export const EnglishName = styled.h1`
   font-size: 2rem;
   color: ${({ theme }) => theme.text};
   isolation: isolate;
+  text-transform: capitalize;
 
   @media (min-width: 768px) {
     font-size: 4rem;

@@ -18,7 +18,7 @@ export const Container = styled('a')`
 `;
 
 export const Title = styled('h2')`
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-transform: capitalize;
   word-break: break-all;
   margin: .5rem 0;
