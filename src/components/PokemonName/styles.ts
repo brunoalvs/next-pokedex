@@ -8,14 +8,22 @@ export const Container = styled.section`
 `;
 
 export const JapaneseName = styled.h2`
-  font-size: 6rem;
+  font-size: 3rem;
   font-weight: bold;
   color: ${({ theme }) => theme.shape};
   position: absolute;
+
+  @media (min-width: 768px) {
+    font-size: 6rem;
+  }
 `;
 
 export const EnglishName = styled.h1`
-  font-size: 4rem;
+  font-size: 2rem;
   color: ${({ theme }) => theme.text};
   isolation: isolate;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 `;
