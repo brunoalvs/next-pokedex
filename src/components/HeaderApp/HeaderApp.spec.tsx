@@ -5,7 +5,7 @@ describe('Components/HeaderApp:', () => {
   it('shoud render header with logo', () => {
     render(<HeaderApp />)
     const logo = screen.getByRole('heading', {
-      name: 'Pokedex'
+      name: /Pokédex/i
     })
     expect(logo).toBeTruthy()
   })

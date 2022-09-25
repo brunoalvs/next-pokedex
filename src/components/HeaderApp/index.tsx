@@ -1,7 +1,9 @@
+import { Logo } from '../Logo'
+
 export const HeaderApp = () => {
   return (
     <header>
-      <h1>Pokedex</h1>
+      <Logo />
     </header>
   )
 }

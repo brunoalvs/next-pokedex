@@ -5,7 +5,8 @@ export const getPokemonByName = async ( name: string): Promise<Pokemon> => {
   const data: Pokemon = await fetchPokemons(
     `https://pokeapi.co/api/v2/pokemon/${name}`
   )
-  const result: Pokemon = {
+
+  return {
     id: data.id,
     name: data.name,
     sprites: {
@@ -17,10 +18,8 @@ export const getPokemonByName = async ( name: string): Promise<Pokemon> => {
       },
     },
     stats: data.stats,
-    type: data.type,
+    types: data.types,
     height: data.height,
     weight: data.weight,
   }
-
-  return result
 }
