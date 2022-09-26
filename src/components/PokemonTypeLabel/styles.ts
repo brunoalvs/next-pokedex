@@ -5,6 +5,6 @@ export const Container = styled.label`
   border-radius: 2rem;
   color: ${({ theme }) => theme.body};
   font-size: 0.75rem;
-  padding: 0 0.875rem;
+  padding: 0 1rem;
   text-transform: uppercase;
 `;
