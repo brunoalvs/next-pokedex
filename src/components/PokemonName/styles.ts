@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  border: 1px dashed hotpink;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem 1.5rem;
 `;
 
 export const JapaneseName = styled.h2`
@@ -25,6 +25,6 @@ export const EnglishName = styled.h1`
   text-transform: capitalize;
 
   @media (min-width: 768px) {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 `;
