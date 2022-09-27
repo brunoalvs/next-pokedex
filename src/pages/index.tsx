@@ -8,17 +8,11 @@ interface HomeProps {
 }
 
 function Home({ pokemons }: HomeProps) {
-  const [pokemonsList, setPokemonsList] = useState(pokemons)
-
-  const morePokemons = async () => {
-    const newPokemons = await loadPokemons(pokemonsList.length)
-    setPokemonsList([...pokemonsList, ...(newPokemons as Pokemon[])])
-  }
+  const [pokemonsList] = useState(pokemons)
 
   return (
     <div data-testid='homepage'>
       <PokeList pokemons={pokemonsList} />
-      <button onClick={async () => morePokemons()}>Load More</button>
     </div>
   )
 }
