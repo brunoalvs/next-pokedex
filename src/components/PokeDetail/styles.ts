@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  border: 1px dashed green;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-auto-rows: 1fr;
@@ -10,7 +9,6 @@ export const Container = styled.section`
 `;
 
 export const ContentColumn = styled.div`
-  border: 1px dashed blue;
   padding-bottom: 1rem;
 `;
 
@@ -26,9 +24,8 @@ export const Figure = styled.figure`
 `;
 
 export const Sizes = styled.div`
-  border: 1px dashed red;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 2rem;
 `;
 

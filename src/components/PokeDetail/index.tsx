@@ -1,6 +1,6 @@
-import { PokemonStat, PokemonType } from '@/types/pokemons'
-import { decimetresToMeters, hectogramToKg } from '@/utils/SizeUtils'
 import Image from 'next/image'
+import { PokemonStat, PokemonType } from '@/types/pokemons'
+import { decimetresToMeters, hectogramToKg } from '@/utils/sizeUtils'
 import { PokemonName } from '../PokemonName'
 import { PokemonSize } from '../PokemonSize'
 import { PokemonStatsList } from '../PokemonStatsList'

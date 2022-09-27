@@ -10,7 +10,7 @@ export const PokemonTypeList = ({ types }: PokemonTypeListProps) => {
   return (
     <Container>
       {types.map((type) => (
-        <PokemonTypeLabel key={type.slot}>
+        <PokemonTypeLabel key={type.slot} colorName={type.type.name}>
           {type.type.name}
         </PokemonTypeLabel>
       ))}
