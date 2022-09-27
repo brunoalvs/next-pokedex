@@ -11,6 +11,7 @@ export const Container = styled.section`
 
 export const ContentColumn = styled.div`
   border: 1px dashed blue;
+  padding-bottom: 1rem;
 `;
 
 export const PokeId = styled.h3`

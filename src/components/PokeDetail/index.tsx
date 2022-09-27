@@ -3,6 +3,7 @@ import { decimetresToMeters, hectogramToKg } from '@/utils/SizeUtils'
 import Image from 'next/image'
 import { PokemonName } from '../PokemonName'
 import { PokemonSize } from '../PokemonSize'
+import { PokemonStatsList } from '../PokemonStatsList'
 import { PokemonTypeList } from '../PokemonTypeList'
 import { Container, ContentColumn, Description, Figure, PokeId, Sizes } from './styles'
 
@@ -25,10 +26,10 @@ export const PokeDetail = ({ ...pokemon }: PokeDetailProps) => {
         <PokeId>{pokemon.id.toString().padStart(4, '#00')}</PokeId>
         <Figure>
           <Image
-            width={300}
-            height={300}
+            width={480}
+            height={480}
             src={pokemon.sprite}
-            alt={`${name} sprite`}
+            alt={`${pokemon.name} sprite`}
             layout='intrinsic'
             objectFit='contain'
           />
@@ -44,6 +45,7 @@ export const PokeDetail = ({ ...pokemon }: PokeDetailProps) => {
         <Description>
           {pokemon.flavorText}
         </Description>
+        <PokemonStatsList stats={pokemon.stats} />
       </ContentColumn>
     </Container>
   )
