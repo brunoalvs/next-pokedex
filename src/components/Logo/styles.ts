@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.h2`
-  color: #2e3057; //var(--text-title);
+  color: ${({ theme }) => theme.text};
   display: inline;
   font-size: 2rem;
   font-family: 'Poppins', sans-serif;

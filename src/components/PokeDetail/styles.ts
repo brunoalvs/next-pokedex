@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
 
   @media (min-width: 600px) {
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     padding: 2rem;
+    gap: 2rem;
   }
 `;
 
@@ -25,6 +26,7 @@ export const Figure = styled.figure`
   /* padding: 2rem; */
   display: flex;
   justify-content: center;
+  margin: 2rem 0;
 `;
 
 export const Sizes = styled.div`

@@ -8,7 +8,7 @@ export const Container = styled.section`
 `;
 
 export const JapaneseName = styled.h2`
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: bold;
   color: ${({ theme }) => theme.shape};
   position: absolute;
