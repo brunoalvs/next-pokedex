@@ -18,7 +18,7 @@ export const Container = styled('a')`
 `;
 
 export const Title = styled('h2')`
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: capitalize;
   word-break: break-all;
   margin: .5rem 0;
@@ -29,8 +29,8 @@ export const Title = styled('h2')`
 `;
 
 export const Text = styled('p')`
-  font-size: 1rem;
-  margin: .2rem 0 .5rem;
+  font-size: 0.8rem;
+  margin: 0;
   opacity: 0.95;
 
   @media (min-width: 600px) {

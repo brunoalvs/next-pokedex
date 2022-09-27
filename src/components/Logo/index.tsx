@@ -1,9 +1,18 @@
+import { useRouter } from 'next/router'
 import { Container } from './styles'
 
 export const Logo = () => {
+  const router = useRouter()
+
   return (
-    <Container>
+    <Container
+      onClick={() => {
+        if (router.pathname !== '/') {
+          router.back()
+        }
+      }}
+    >
       Pokédex
-    </Container>
+    </Container >
   )
 }

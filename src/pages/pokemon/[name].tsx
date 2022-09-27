@@ -1,13 +1,37 @@
+import { PokeDetail } from '@/components/PokeDetail'
 import { QParams } from '@/types/global'
-import { Pokemon } from '@/types/pokemons'
+import { Pokemon, PokemonStat, PokemonType } from '@/types/pokemons'
 import { getPokemonByName } from '@/utils/get-pokemon-by-name'
+import { getPokemonSpecies } from '@/utils/get-pokemon-species'
 import { getPokemons } from '@/utils/get-pokemons'
 import { GetStaticPaths } from 'next'
-import Image from 'next/image'
 import { ReactElement } from 'react'
 
 interface PokemonPageProps {
-  pokemon: Pokemon
+  pokemon: {
+    flavor_text: string;
+    is_legendary: boolean;
+    names: {
+      name: string;
+      language: {
+        name: string;
+      };
+    }[];
+    id: number;
+    name: string;
+    sprites: {
+      front_default: string;
+      other: {
+        'official-artwork': {
+          front_default: string;
+        };
+      };
+    };
+    height: number;
+    weight: number;
+    stats: PokemonStat[];
+    types: PokemonType[];
+  }
 }
 
 const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
@@ -18,10 +42,17 @@ const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
 
   return (
     <div>
-      <h2>{pokemon.name}</h2>
-      <p>{pokemon.id.toString().padStart(4, '#00')}</p>
-      <Image width={240} height={240} alt={`${pokemon.name} sprite`} src={pokemon.sprites.front_default ?? ''} style={{ imageRendering: 'pixelated' }} />
-      <Image width={512} height={512} alt={`${pokemon.name} sprite`} src={pokemon.sprites.other['official-artwork'].front_default} />
+      <PokeDetail
+        id={pokemon.id}
+        name={pokemon.name}
+        jpname={pokemon.names[1].name}
+        sprite={pokemon.sprites.other['official-artwork'].front_default}
+        types={pokemon.types as PokemonType[]}
+        height={pokemon.height as number}
+        weight={pokemon.weight as number}
+        stats={pokemon.stats as PokemonStat[]}
+        flavorText={pokemon.flavor_text}
+      />
     </div>
   )
 }
@@ -34,7 +65,13 @@ export const getStaticProps = async ({ params }: {
 
   const { name } = params
 
-  const pokemon = await getPokemonByName(name as string)
+  const pokemonInfo = await getPokemonByName(name as string)
+  const species = await getPokemonSpecies(pokemonInfo.id)
+
+  const pokemon = {
+    ...pokemonInfo,
+    ...species
+  }
 
   return {
     props: {

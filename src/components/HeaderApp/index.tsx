@@ -1,9 +1,10 @@
 import { Logo } from '../Logo'
+import { Container } from './styles'
 
 export const HeaderApp = () => {
   return (
-    <header>
+    <Container>
       <Logo />
-    </header>
+    </Container>
   )
 }
