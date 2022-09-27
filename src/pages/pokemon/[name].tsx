@@ -1,6 +1,6 @@
 import { PokeDetail } from '@/components/PokeDetail'
 import { QParams } from '@/types/global'
-import { Pokemon, PokemonStat, PokemonType } from '@/types/pokemons'
+import { PokemonStat, PokemonType } from '@/types/pokemons'
 import { getPokemonByName } from '@/utils/get-pokemon-by-name'
 import { getPokemonSpecies } from '@/utils/get-pokemon-species'
 import { getPokemons } from '@/utils/get-pokemons'
