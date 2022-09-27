@@ -41,7 +41,7 @@ const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
   }
 
   return (
-    <div>
+    <>
       <PokeDetail
         id={pokemon.id}
         name={pokemon.name}
@@ -53,7 +53,7 @@ const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
         stats={pokemon.stats as PokemonStat[]}
         flavorText={pokemon.flavor_text}
       />
-    </div>
+    </>
   )
 }
 

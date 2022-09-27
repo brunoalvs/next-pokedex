@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.h2`
   color: #2e3057; //var(--text-title);
   display: inline;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   transition: filter 0.2s ease;

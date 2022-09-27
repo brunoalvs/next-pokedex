@@ -27,8 +27,8 @@ export const PokeDetail = ({ ...pokemon }: PokeDetailProps) => {
         <PokeId>{pokemon.id.toString().padStart(4, '#00')}</PokeId>
         <Figure>
           <Image
-            width={480}
-            height={480}
+            width={420}
+            height={420}
             src={pokemon.sprite}
             alt={`${pokemon.name} sprite`}
             layout='intrinsic'

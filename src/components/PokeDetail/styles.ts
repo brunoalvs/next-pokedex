@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
-  padding: 2rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    padding: 2rem;
+  }
 `;
 
 export const ContentColumn = styled.div`
@@ -19,6 +22,7 @@ export const PokeId = styled.h3`
 `;
 
 export const Figure = styled.figure`
+  /* padding: 2rem; */
   display: flex;
   justify-content: center;
 `;

@@ -8,7 +8,7 @@ export const Logo = () => {
     <Container
       onClick={() => {
         if (router.pathname !== '/') {
-          router.back()
+          router.push('/')
         }
       }}
     >

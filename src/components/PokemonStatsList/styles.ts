@@ -16,9 +16,12 @@ export const List = styled.ul`
 
 export const StatItem = styled.li`
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
   align-items: center;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+  }
 `;
 
 export const StatName = styled.p`
