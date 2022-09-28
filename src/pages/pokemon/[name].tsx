@@ -51,7 +51,7 @@ const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
         height={pokemon.height as number}
         weight={pokemon.weight as number}
         stats={pokemon.stats as PokemonStat[]}
-        flavorText={pokemon.flavor_text}
+        flavorText={pokemon.flavor_text.replace(/\u0000/g, '')}
       />
     </>
   )
