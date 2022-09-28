@@ -19,7 +19,7 @@ export const StatItem = styled.li`
   align-items: center;
 
   @media (min-width: 600px) {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: minmax(140px, 1fr) 3fr;
     gap: 1rem;
   }
 `;
