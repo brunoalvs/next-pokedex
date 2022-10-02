@@ -1,4 +1,3 @@
-import { colours } from 'src/helpers/type-colours'
 import { Container } from './styles'
 
 interface PokemonTypeLabelProps {
@@ -7,10 +6,9 @@ interface PokemonTypeLabelProps {
 }
 
 export const PokemonTypeLabel = ({ children, colorName }: PokemonTypeLabelProps) => {
-  const color = colours[colorName as keyof typeof colours]
 
   return (
-    <Container color={color}>
+    <Container color={colorName}>
       {children}
     </Container>
   )
