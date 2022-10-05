@@ -1,6 +1,6 @@
 import { fetchPokemons } from './fetch-pokemons'
 
-type PokemonSpeciesReturn = {
+export type PokemonSpeciesReturn = {
   flavor_text: string
   is_legendary: boolean
   names: {
@@ -11,7 +11,7 @@ type PokemonSpeciesReturn = {
   }[]
 }
 
-type PokemonSpeciesResponseFromApi = {
+export type PokemonSpeciesResponseFromApi = {
   flavor_text_entries: {
     flavor_text: string
     language: {
@@ -31,7 +31,7 @@ export const getPokemonSpecies = async (id: number): Promise<PokemonSpeciesRetur
   const data: PokemonSpeciesResponseFromApi = await fetchPokemons(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
 
   const response: PokemonSpeciesReturn = {
-    flavor_text: data.flavor_text_entries.find((item) => item.language.name === 'en')?.flavor_text || '',
+    flavor_text: data.flavor_text_entries.find((item) => item.language.name === 'en')?.flavor_text as string,
     is_legendary: data.is_legendary,
     names: data.names.filter((item) => item.language.name === 'en' || item.language.name === 'ja')
   }
