@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import PokeCard from '@/components/PokeCard'
 import { Pokemon } from '@/types/pokemons'
 
-import { results } from '@/mock/pokemons'
+import { results } from '@/tests/mock/pokemons'
 
 const mockPokecardProps: Pokemon = results[0]
 

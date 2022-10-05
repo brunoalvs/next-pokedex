@@ -18,7 +18,6 @@
     "types": ["node"],
     "paths": {
       "@/components/*": ["src/components/*"],
-      "@/mock/*": ["src/tests/mock/*"],
       "@/pages/*": ["src/pages/*"],
       "@/templates/*": ["src/templates/*"],
       "@/tests/*": ["src/tests/*"],

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { results } from '@/mock/pokemons'
+import { results } from '@/tests/mock/pokemons'
 
 import { PokeList } from './'
 

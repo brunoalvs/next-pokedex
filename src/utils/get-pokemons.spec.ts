@@ -1,4 +1,4 @@
-import { results as mockPokemonsList } from '@/mock/get-pokemons-response'
+import { results as mockPokemonsList } from '@/tests/mock/get-pokemons-response'
 import { getPokemons } from '@/utils/get-pokemons'
 
 beforeAll(() => {

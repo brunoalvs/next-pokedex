@@ -2,7 +2,7 @@ import { mocked } from 'jest-mock'
 import { getPokemons } from './get-pokemons'
 import { getPokemonInfoToCard } from './get-pokemon-infocard'
 import { loadPokemons } from './load-pokemons'
-import { results as getPokemonsResults } from '@/mock/get-pokemons-response'
+import { results as getPokemonsResults } from '@/tests/mock/get-pokemons-response'
 import { waitFor } from '@testing-library/dom'
 
 const MockResponseRequest = {
