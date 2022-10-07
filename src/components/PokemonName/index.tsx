@@ -1,6 +1,6 @@
 import { Container, EnglishName, JapaneseName } from './styles'
 
-interface PokemonNameProps {
+export interface PokemonNameProps {
   name: string
   jpname: string
 }

@@ -1,15 +1,14 @@
 import { Container } from './styles'
 
-interface PokemonTypeLabelProps {
-  children: React.ReactNode
-  colorName: string
+export interface PokemonTypeLabelProps {
+  colorName?: string
 }
 
-export const PokemonTypeLabel = ({ children, colorName }: PokemonTypeLabelProps) => {
+export const PokemonTypeLabel = ({ colorName = 'normal' }: PokemonTypeLabelProps) => {
 
   return (
     <Container color={colorName}>
-      {children}
+      {colorName}
     </Container>
   )
 }
