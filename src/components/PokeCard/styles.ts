@@ -1,11 +1,14 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 
-export const Container = styled('a')`
+export const Container = styled(Link)`
   background-color: ${({ theme }) => theme.shape};
+  color: ${({ theme }) => theme.text};
   border-radius: 1rem;
   cursor: pointer;
 	padding: 1rem;
 	text-align: center;
+  text-decoration: none;
   transition: filter 0.2s, background-color 0.5s;
 
   &:hover {

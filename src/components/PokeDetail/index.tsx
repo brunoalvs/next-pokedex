@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image';
 import { decimetresToMeters, hectogramToKg } from '@/utils/handleWithSize'
 import { PokemonStat, PokemonType } from '@/types/pokemons'
 import { PokemonName } from '../PokemonName'
