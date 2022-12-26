@@ -40,21 +40,19 @@ const PokemonPage = ({ pokemon }: PokemonPageProps): ReactElement => {
     return <div>Pokémon Not Found</div>
   }
 
-  return (
-    <>
-      <PokeDetail
-        id={pokemon.id}
-        name={pokemon.name}
-        jpname={pokemon.names[1].name}
-        sprite={pokemon.sprites.other['official-artwork'].front_default}
-        types={pokemon.types as PokemonType[]}
-        height={pokemon.height as number}
-        weight={pokemon.weight as number}
-        stats={pokemon.stats as PokemonStat[]}
-        flavorText={pokemon.flavor_text.replace(/\u0000/g, '')}
-      />
-    </>
-  )
+  return <>
+    <PokeDetail
+      id={pokemon.id}
+      name={pokemon.name}
+      jpname={pokemon.names[1].name}
+      sprite={pokemon.sprites.other['official-artwork'].front_default}
+      types={pokemon.types as PokemonType[]}
+      height={pokemon.height as number}
+      weight={pokemon.weight as number}
+      stats={pokemon.stats as PokemonStat[]}
+      flavorText={pokemon.flavor_text.replace(/\u0000/g, '')}
+    />
+  </>;
 }
 
 export default PokemonPage
