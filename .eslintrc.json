@@ -16,7 +16,6 @@
   "rules": {
     "array-callback-return": "off",
     "object-curly-spacing": ["error", "always"],
-    // Indentation is handled by Prettier
     "indent": [
       "error",
       2,

@@ -1,4 +1,4 @@
-import {decimetresToMeters, hectogramToKg} from './handleWithSize';
+import { decimetresToMeters, hectogramToKg } from './handleWithSize';
 
 describe('handle with sizes:', () => {
 
