@@ -1,6 +1,6 @@
 import { Container, Type, Value } from './styles'
 
-interface PokemonSizeProps {
+export interface PokemonSizeProps {
   type: string
   value: string
 }

@@ -1,4 +1,4 @@
-import {fetchPokemons} from './fetch-pokemons'
+import { fetchPokemons } from './fetch-pokemons'
 
 const MockResponseRequest = {
   count: 1118,

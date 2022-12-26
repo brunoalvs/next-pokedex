@@ -2,7 +2,7 @@ import { PokemonStat } from '@/types/pokemons';
 import { HeadingSection } from '../HeadingSection';
 import { Container, List, Progress, StatItem, StatName } from './styles'
 
-interface PokemonStatsListProps {
+export interface PokemonStatsListProps {
   stats: PokemonStat[];
 }
 
@@ -40,8 +40,6 @@ function getMaxStat(stat: PokemonStat) {
       return 230;
     case 'speed':
       return 180;
-    default:
-      break
   }
 }
 
