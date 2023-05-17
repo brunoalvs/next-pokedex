@@ -2,21 +2,13 @@
   <img src="public/pokedex-cover.png" width="720px">
 </p>
 
-
 # Pokedex
-
 A simple pokedex application developed to practice NextJS with TypeScript, Jest and Styled Components.
-
-  
-
-Design base on work of [Sulis Triyono](https://www.sulistryono.com/) published at [Dribbble](https://dribbble.com/shots/16833947-Mobile-Pokedex-App-Design-Exploration).
+The design is based on the work of [Sulis Triyono](https://www.sulistryono.com/) published at [Dribbble](https://dribbble.com/shots/16833947-Mobile-Pokedex-App-Design-Exploration).
 
 ## Scripts
-
 These scripts refer to the different stages of developing an application:
-
 ---
-
 | Script: | Command:        | Description:                                                    |
 | ------- | --------------- | --------------------------------------------------------------- |
 | dev     | `npm run dev`   | Runs `next dev` to start Next.js in development mode            |
