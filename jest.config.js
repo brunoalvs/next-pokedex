@@ -16,6 +16,7 @@ const customJestConfig = {
   ],
   coverageDirectory: '<rootDir>/coverage/',
   coverageReporters: ['text', 'lcov', 'html'],
+  coverageProvider: 'v8',
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
@@ -25,7 +26,7 @@ const customJestConfig = {
     '^@/types/(.*)$': '<rootDir>/src/types/$1',
     '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
   },
-  setupFilesAfterEnv: ['<rootDir>/src/tests/setupTests.ts'],
+  // setupFilesAfterEnv: ['<rootDir>/src/tests/setupTests.ts'],
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['/node_modules', '/.next/'],
 }
