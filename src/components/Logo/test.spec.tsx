@@ -1,6 +1,15 @@
 import { Logo } from '@/components/Logo'
 import { render, screen, cleanup } from '@testing-library/react'
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      asPath: '/',
+      push: jest.fn()
+    }
+  }
+}))
+
 describe('Logo', () => {
   beforeEach(() => {
     render(<Logo />)
